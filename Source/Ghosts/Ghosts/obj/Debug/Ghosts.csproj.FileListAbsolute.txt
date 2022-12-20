@@ -1,0 +1,4 @@
+S:\Games\Steam\steamapps\common\RimWorld\Mods\Ghosts\1.4\Assemblies\Ghosts.dll
+S:\Games\Steam\steamapps\common\RimWorld\Mods\Ghosts\Source\Ghosts\Ghosts\obj\Debug\Ghosts.csproj.AssemblyReference.cache
+S:\Games\Steam\steamapps\common\RimWorld\Mods\Ghosts\Source\Ghosts\Ghosts\obj\Debug\Ghosts.csproj.CoreCompileInputs.cache
+S:\Games\Steam\steamapps\common\RimWorld\Mods\Ghosts\Source\Ghosts\Ghosts\obj\Debug\Ghosts.dll

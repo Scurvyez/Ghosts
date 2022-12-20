@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName="Human"]</xpath>
+        <value>
+            <comps>
+                <li Class="Ghosts.CompProperties_PawnSawGhost">
+                    <graphicsSawGhost>
+                        <li>
+                            <texPath>UI/Thoughts/SawGhost</texPath>
+                            <graphicClass>Graphic_Single</graphicClass>
+                            <shaderType>MoteGlowDistorted</shaderType>
+                            <shaderParameters>
+                                <_distortionScale>0.325</_distortionScale>
+                                <_distortionIntensity>0.0125</_distortionIntensity>
+                                <_DistortionTex>/Other/Ripples</_DistortionTex>
+                            </shaderParameters>
+                            <drawSize>(1.0, 1.0)</drawSize>
+                            <drawOffset>(0.15, 1.0, 0.45)</drawOffset>
+                            <damageData>
+                                <enabled>false</enabled>
+                            </damageData>
+                        </li>
+                    </graphicsSawGhost>
+                </li>
+            </comps>
+        </value>
+    </Operation>
+
+</Patch>

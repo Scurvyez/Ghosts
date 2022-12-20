@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Defs>
+
+    <!--==================== Saw Ghost (Soothed) ====================-->
+
+    <ThoughtDef>
+        <defName>SZ_SawGhost_Soothed</defName>
+        <icon>Things/Pawn/Blank_east</icon>
+        <showBubble>false</showBubble>
+        <durationDays>0.10</durationDays>
+        <stackLimit>1</stackLimit>
+        <stages>
+            <li>
+                <label>saw ghost</label>
+                <description>{PAWN_nameDef} saw a ghost.\n\n{PAWN_nameDef} feels a calming wave flow gently over them.</description>
+                <baseMoodEffect>3</baseMoodEffect>
+            </li>
+        </stages>
+    </ThoughtDef>
+
+    <!--==================== Saw Ghost (Scared) ====================-->
+
+    <ThoughtDef>
+        <defName>SZ_SawGhost_Scared</defName>
+        <icon>Things/Pawn/Blank_east</icon>
+        <showBubble>false</showBubble>
+        <durationDays>0.10</durationDays>
+        <stackLimit>1</stackLimit>
+        <nullifyingTraits>
+            <li>Psychopath</li>
+            <li>Bloodlust</li>
+        </nullifyingTraits>
+        <stages>
+            <li>
+                <label>saw ghost</label>
+                <description>{PAWN_nameDef} saw a ghost! Fear has taken hold of {PAWN_nameDef} body!</description>
+                <baseMoodEffect>-7</baseMoodEffect>
+            </li>
+        </stages>
+    </ThoughtDef>
+
+</Defs>
