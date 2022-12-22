@@ -20,6 +20,8 @@ namespace Ghosts
         public override void CompTick()
         {
             base.CompTick();
+            Pawn parentPawn = parent as Pawn;
+            Pawn_RelationsTracker relations = parentPawn.relations;
 
             tickCounter++;
             if (tickCounter <= Props.tickInterval)
@@ -34,7 +36,34 @@ namespace Ghosts
                 {
                     if ((thing is Pawn pawn) && (pawn.IsColonist || !pawn.NonHumanlikeOrWildMan()))
                     {
-                        pawn.needs.mood.thoughts.memories.TryGainMemory(Props.badThoughtDef);
+                        if (PawnUtility.IsBiologicallyOrArtificiallyBlind(pawn))
+                        {
+                            // maybe still some awareness of ghosts, just less than usual, like a "gut-feeling"?
+                            return;
+                        }
+
+                        if (Props.badThoughtDef != null)
+                        {
+                            pawn.needs.mood.thoughts.memories.TryGainMemory(Props.badThoughtDef);
+                        }
+
+                        if (Props.goodThoughtDef != null)
+                        {
+                            pawn.needs.mood.thoughts.memories.TryGainMemory(Props.goodThoughtDef);
+
+                            if (relations.FamilyByBlood.Any())
+                            {
+                                pawn.needs.mood.thoughts.memories.TryGainMemory(Props.familialThoughtDef);
+                            }
+                        }
+
+                        for (int i = 0; i < thisPawn.Map.GetComponent<MapComponent_StoreGhostPawns>().Ghosts.Count; i++)
+                        {
+                            if (relations.DirectRelationExists(PawnRelationDefOf.Lover, thisPawn.Map.GetComponent<MapComponent_StoreGhostPawns>().Ghosts[i]))
+                            {
+                                pawn.needs.mood.thoughts.memories.TryGainMemory(Props.loverThoughtDef);
+                            }
+                        }
                     }
                 }
             }

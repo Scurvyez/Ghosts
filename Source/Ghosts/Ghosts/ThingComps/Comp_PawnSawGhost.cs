@@ -19,11 +19,11 @@ namespace Ghosts
             base.PostDraw();
             Pawn parentPawn = parent as Pawn;
 
+            List<Thought> thoughts = new List<Thought>();
+            PawnNeedsUIUtility.GetThoughtGroupsInDisplayOrder(parentPawn.needs.mood, thoughts);
+
             if (parentPawn != null)
             {
-                List<Thought> thoughts = new List<Thought>();
-                PawnNeedsUIUtility.GetThoughtGroupsInDisplayOrder(parentPawn.needs.mood, thoughts);
-
                 Vector3 drawPos = parent.DrawPos;
                 Rot4 rotation = Rot4.North;
 
@@ -40,7 +40,6 @@ namespace Ghosts
                                 parent
                                 );
                         }
-
                     }
                 }
             }

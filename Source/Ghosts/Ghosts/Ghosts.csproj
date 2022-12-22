@@ -31,6 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="0Harmony, Version=2.2.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Lib.Harmony.2.2.2\lib\net472\0Harmony.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Assembly-CSharp">
       <HintPath>..\..\..\..\..\RimWorldWin64_Data\Managed\Assembly-CSharp.dll</HintPath>
       <Private>False</Private>
@@ -53,7 +57,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DebugTools\DebugToolsGhosts.cs" />
+    <Compile Include="MapComps\MapComponent_StoreGhostPawns.cs" />
+    <Compile Include="GhostsMain.cs" />
     <Compile Include="DefOfs\GhostsDefOf.cs" />
+    <Compile Include="Harmony\Pawn_Postfix.cs" />
     <Compile Include="ThingComps\Comp_GiveThought.cs" />
     <Compile Include="ThingComps\CompProperties\CompProperties_GiveThought.cs" />
     <Compile Include="ThingComps\Comp_PawnSawGhost.cs" />
@@ -61,6 +69,11 @@
     <Compile Include="ThingComps\Comp_ExtraPawnGraphics.cs" />
     <Compile Include="ThingComps\CompProperties\CompProperties_ExtraPawnGraphics.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\PawnDataDuplication.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

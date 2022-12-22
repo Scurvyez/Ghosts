@@ -1,4 +1,5 @@
 ﻿using RimWorld;
+using Verse;
 
 namespace Ghosts
 {
@@ -7,6 +8,9 @@ namespace Ghosts
     {
         public static ThoughtDef SZ_SawGhost_Soothed;
         public static ThoughtDef SZ_SawGhost_Scared;
+
+        public static PawnKindDef SZ_GhostFemaleBody;
+        public static PawnKindDef SZ_GhostFatBody;
 
         static GhostsDefOf()
         {

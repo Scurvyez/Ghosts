@@ -1,25 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <ModMetaData>
-  <name>Ghosts</name>
-  <author>Scurvyez</author>
-  <packageId>Scurvyez.Ghosts</packageId>
-  <supportedVersions>
-    <li>1.4</li>
-  </supportedVersions>
+    <name>Ghosts</name>
+    <author>Scurvyez</author>
+    <packageId>Scurvyez.Ghosts</packageId>
+    <supportedVersions>
+        <li>1.4</li>
+    </supportedVersions>
 
-  <description>
+    <description>
 Discord: Steve o.O#1151
 steam: Scurvyez
 
 GHOSTS!!!
 
-  </description>
+    </description>
 
-  <loadAfter>
-    <li>Ludeon.RimWorld</li>
-    <li>Ludeon.RimWorld.Royalty</li>
-    <li>Ludeon.RimWorld.Ideology</li>
-  </loadAfter>
+    <loadAfter>
+        <li>Ludeon.RimWorld</li>
+        <li>Ludeon.RimWorld.Royalty</li>
+        <li>Ludeon.RimWorld.Ideology</li>
+    </loadAfter>
+
+    <!-- 
+        TO-DO
+            + Thanks to...
+                - Killathon
+                    + for pawn duplication code
+                    + reddit for the great ideas implemented in this mod
+                    
+            + events/rituals
+                - seance to speak with dead colonists/family members (NEEDS MEDIUM)(Ideology)
+                    + enemies to gain intel on factions?
+                - holiday themes
+                    + Christmas ghosts
+                    + Day of the Dead
+                    + Halloween
+                - anniversary of the ghosts' death
+                    + come back for x time to haunt/sooth members of the colony
+                - possessions!
+                    + ghosts can "possess" colonists/any other humanlike pawn currently on the map
+
+            + thoughts (pos/neg)
+                - for relations to/with pawns still living in colony or in the world/ghosts on colony map
+                    + lovers
+                    + family members
+                    + pawn that killed the ghost
+                - for seeing the spirits of animals, venerated animals, modded animals
+                - for seeing the ghosts of alien races
+
+            + graphics
+                - for every vanilla animal
+                - for every vanilla human pawn body variant
+
+            + sounds
+                - for each ghosts' PawnKindDef
+                - for events, rituals
+                - for ethereal effects
+
+            + random other stuff
+                - [DONE] add check to see if pawns in radius of thought comp are blind or not
+                - can attack/take damage?
+                - move through walls/buildings
+                - zero terrain movement penalty (floating)
+                - graveyards for them to "inhabit"
+                    + headstones that display a ghosts' info
+                    + lootable graves
+                        - ghosts get angry from this?
+                - pawns want to go outside instead of sleep because they spotted a ghost before
+                - pawns not properly buried have a much higher chance to haunt the colony
+
+            + traits
+                - ghost-hunter, enjoys looking for ghosts, mood buffs
+                - medium, capable of performing the seance
+    -->
 
 </ModMetaData>

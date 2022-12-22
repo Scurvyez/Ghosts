@@ -4,12 +4,12 @@
 
     <!--==================== Ghost ThingDef Base ====================-->
 
-    <ThingDef ParentName="AnimalThingBase" Name="SZ_GhostBaseThing">
+    <ThingDef ParentName="BasePawn" Name="SZ_GhostBaseThing">
         <defName>SZ_GhostBaseThing</defName>
         <label>ghost</label>
         <description>PLACEHOLDER</description>
         <statBases>
-            <MoveSpeed>1.0</MoveSpeed>
+            <MoveSpeed>0.6</MoveSpeed>
             <ComfyTemperatureMin>-500</ComfyTemperatureMin>
             <ComfyTemperatureMax>500</ComfyTemperatureMax>
             <MeatAmount>0</MeatAmount>
@@ -45,7 +45,7 @@
 
     <!--==================== Ghost PawnKindDef Base ====================-->
 
-    <PawnKindDef ParentName="AnimalKindBase" Name="SZ_GhostBaseKind">
+    <PawnKindDef ParentName="BasePlayerPawnKind" Name="SZ_GhostBaseKind">
         <defName>SZ_GhostBaseKind</defName>
         <label>ghost</label>
         <race>SZ_GhostBaseThing</race>

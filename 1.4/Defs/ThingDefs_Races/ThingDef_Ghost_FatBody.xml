@@ -8,14 +8,13 @@
         <defName>SZ_GhostFatBody</defName>
         <comps>
             <li Class="Ghosts.CompProperties_GiveThought">
-                <goodThoughtDef>SZ_SawGhost_Soothed</goodThoughtDef>
                 <badThoughtDef>SZ_SawGhost_Scared</badThoughtDef>
                 <radius>6</radius>
             </li>
             <li Class="Ghosts.CompProperties_ExtraPawnGraphics">
                 <graphicsExtra>
                     <li>
-                        <texPath>Things/Pawn/FatBody/Ghost_Layer1</texPath>
+                        <texPath>Things/Pawn/FatBody/FatBody_Layer1</texPath>
 					    <graphicClass>Graphic_Multi</graphicClass>
                         <shaderType>MoteGlowDistorted</shaderType>
                         <drawOffset>(0.0, 1.0, 0.0)</drawOffset>
@@ -29,7 +28,7 @@
                         </damageData>
                     </li>
                     <li>
-                        <texPath>Things/Pawn/FatBody/Ghost_Layer2</texPath>
+                        <texPath>Things/Pawn/FatBody/FatBody_Layer2</texPath>
 					    <graphicClass>Graphic_Multi</graphicClass>
                         <shaderType>MoteGlowDistorted</shaderType>
                         <drawOffset>(0.0, 1.1, 0.0)</drawOffset>
@@ -43,7 +42,7 @@
                         </damageData>
                     </li>
                     <li>
-                        <texPath>Things/Pawn/FatBody/Ghost_Layer3</texPath>
+                        <texPath>Things/Pawn/FatBody/FatBody_Layer3</texPath>
 					    <graphicClass>Graphic_Multi</graphicClass>
                         <shaderType>MoteGlowDistorted</shaderType>
                         <drawOffset>(0.0, 1.2, 0.0)</drawOffset>
@@ -57,7 +56,7 @@
                         </damageData>
                     </li>
                     <li>
-                        <texPath>Things/Pawn/FatBody/Ghost_Layer4</texPath>
+                        <texPath>Things/Pawn/FatBody/FatBody_Layer4</texPath>
 					    <graphicClass>Graphic_Multi</graphicClass>
                         <shaderType>MoteGlowDistorted</shaderType>
                         <drawOffset>(0.0, 1.3, 0.0)</drawOffset>
@@ -71,6 +70,22 @@
                         </damageData>
                     </li>
                 </graphicsExtra>
+                <graphicsChristmas>
+                    <li>
+                        <texPath>Things/Holidays/Christmas/SantaHat</texPath>
+					    <graphicClass>Graphic_Single</graphicClass>
+                        <shaderType>TransparentPostLight</shaderType>
+                        <drawOffset>(0.0, 1.5, 0.0)</drawOffset>
+                        <!-- <shaderParameters>
+                            <_distortionScale>1</_distortionScale>
+                            <_distortionIntensity>0.083</_distortionIntensity>
+                            <_DistortionTex>/Other/Ripples</_DistortionTex>
+                        </shaderParameters> -->
+                        <damageData>
+                            <enabled>false</enabled>
+                        </damageData>
+                    </li>
+                </graphicsChristmas>
             </li>
         </comps>
     </ThingDef>

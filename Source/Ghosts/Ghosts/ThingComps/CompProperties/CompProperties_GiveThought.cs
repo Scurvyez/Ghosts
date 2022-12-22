@@ -17,6 +17,8 @@ namespace Ghosts
 
         public ThoughtDef goodThoughtDef = null;
         public ThoughtDef badThoughtDef = null;
+        public ThoughtDef familialThoughtDef = null;
+        public ThoughtDef loverThoughtDef = null;
 
         public CompProperties_GiveThought() => compClass = typeof(Comp_GiveThought);
     }

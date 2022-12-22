@@ -2,10 +2,11 @@
 
 <Defs>
 
-    <!--==================== Saw Ghost (Soothed) ====================-->
+    <!--==================== Saw Human Ghost (Soothed) ====================-->
 
     <ThoughtDef>
         <defName>SZ_SawGhost_Soothed</defName>
+        <!-- <workerClass>Ghosts.ThoughtWorker_SawGhost</workerClass> -->
         <icon>Things/Pawn/Blank_east</icon>
         <showBubble>false</showBubble>
         <durationDays>0.10</durationDays>
@@ -19,10 +20,11 @@
         </stages>
     </ThoughtDef>
 
-    <!--==================== Saw Ghost (Scared) ====================-->
+    <!--==================== Saw Human Ghost (Scared) ====================-->
 
     <ThoughtDef>
         <defName>SZ_SawGhost_Scared</defName>
+        <!-- <workerClass>Ghosts.ThoughtWorker_SawGhost</workerClass> -->
         <icon>Things/Pawn/Blank_east</icon>
         <showBubble>false</showBubble>
         <durationDays>0.10</durationDays>
@@ -36,6 +38,27 @@
                 <label>saw ghost</label>
                 <description>{PAWN_nameDef} saw a ghost! Fear has taken hold of {PAWN_nameDef} body!</description>
                 <baseMoodEffect>-7</baseMoodEffect>
+            </li>
+        </stages>
+    </ThoughtDef>
+
+    <!--==================== Saw Spirit Animal (Bear) ====================-->
+
+    <ThoughtDef>
+        <defName>SZ_SawSpiritAnimal</defName>
+        <!-- <workerClass>Ghosts.ThoughtWorker_SawGhost</workerClass> -->
+        <icon>Things/Pawn/Blank_east</icon>
+        <showBubble>false</showBubble>
+        <durationDays>0.10</durationDays>
+        <stackLimit>1</stackLimit>
+        <nullifyingTraits>
+            <li>Psychopath</li>
+        </nullifyingTraits>
+        <stages>
+            <li>
+                <label>saw spirit animal</label>
+                <description>{PAWN_nameDef} saw the spirit of an animal!</description>
+                <baseMoodEffect>2</baseMoodEffect>
             </li>
         </stages>
     </ThoughtDef>
