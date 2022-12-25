@@ -108,5 +108,40 @@ namespace Ghosts
                 Log.Warning("[Ghosts] An unexpected error occurred during relation duplication between " + sourcePawn + " " + destinationPawn + ". The destination RelationTracker may be left unstable!" + exception.Message + exception.StackTrace);
             }
         }
+
+        public static Pawn SpawnCopy(Pawn pawn, bool kill = true)
+        {
+            // Generate a new pawn.
+            PawnGenerationRequest request = new PawnGenerationRequest(pawn.kindDef, faction: null, context: PawnGenerationContext.NonPlayer, fixedBiologicalAge: pawn.ageTracker.AgeBiologicalYearsFloat, fixedChronologicalAge: pawn.ageTracker.AgeChronologicalYearsFloat, fixedGender: pawn.gender);
+            Pawn copy = PawnGenerator.GeneratePawn(request);
+
+            // Melanin is controlled via genes. If the pawn has one, use it. Otherwise just take whatever skinColorBase the pawn has.
+            if (copy.genes?.GetMelaninGene() != null)
+            {
+                copy.genes.GetMelaninGene().skinColorBase = pawn.genes.GetMelaninGene().skinColorBase;
+            }
+            else
+            {
+                copy.story.skinColorOverride = pawn.story?.skinColorOverride;
+                copy.story.SkinColorBase = pawn.story.SkinColorBase;
+            }
+
+            // Get rid of any items it may have spawned with.
+            copy?.equipment?.DestroyAllEquipment();
+            copy?.apparel?.DestroyAll();
+            copy?.inventory?.DestroyAll();
+
+            // Copy the pawn's physical attributes.
+            copy.story.bodyType = pawn.story.bodyType;
+
+            Duplicate(pawn, copy);
+
+            // Spawn the copy.
+            GenSpawn.Spawn(copy, pawn.Position, pawn.Map);
+
+            // Draw the copy.
+            copy.Drawer.renderer.graphics.ResolveAllGraphics();
+            return copy;
+        }
     }
 }

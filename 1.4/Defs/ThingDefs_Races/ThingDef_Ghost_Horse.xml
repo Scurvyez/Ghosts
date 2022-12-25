@@ -4,7 +4,7 @@
 
     <!--==================== Ghost Horse ThingDef ====================-->
 
-    <ThingDef ParentName="SZ_GhostBaseThing">
+    <ThingDef ParentName="SZ_AnimalGhostBaseThing">
         <defName>SZ_GhostHorse</defName>
         <comps>
             <li Class="Ghosts.CompProperties_GiveThought">
@@ -76,7 +76,7 @@
 
     <!--==================== Ghost Horse PawnKindDef ====================-->
 
-    <PawnKindDef ParentName="SZ_GhostBaseKind">
+    <PawnKindDef ParentName="SZ_AnimalGhostBaseKind">
         <defName>SZ_GhostHorse</defName>
         <label>horse ghost</label>
         <race>SZ_GhostHorse</race>

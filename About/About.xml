@@ -59,6 +59,7 @@ GHOSTS!!!
                 - for ethereal effects
 
             + random other stuff
+                - make new BodyDef for ghost types?
                 - [DONE] add check to see if pawns in radius of thought comp are blind or not
                 - can attack/take damage?
                 - move through walls/buildings

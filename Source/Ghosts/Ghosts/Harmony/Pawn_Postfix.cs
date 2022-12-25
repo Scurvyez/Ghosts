@@ -47,7 +47,7 @@ namespace Ghosts
                 Log.Message("All pertinent data for " + ghost.Name.ToString().Colorize(debugColor2) + " duplicated successfully.");
 
                 // storage in MapComp
-                __instance.MapHeld.GetComponent<MapComponent_StoreGhostPawns>().Ghosts.Add(ghost);
+                __instance.MapHeld.GetComponent<MapComponent_StoreGhostPawns>().HumanGhosts.Add(ghost);
             }
         }
     }

@@ -15,16 +15,26 @@ namespace Ghosts
     /// </summary>
     public class MapComponent_StoreGhostPawns : MapComponent
     {
-        public List<Pawn> Ghosts = new List<Pawn>();
+        public List<Pawn> HumanGhosts = new List<Pawn>();
+        public List<Pawn> AnimalSpirits = new List<Pawn>();
         public Color debugColor1 = new Color(0.145f, 0.588f, 0.745f, 1f);
+        public Color debugColor2 = new Color(0.945f, 0.288f, 0.145f, 1f);
 
         public MapComponent_StoreGhostPawns(Map map) : base(map) { }
 
         public override void MapComponentTick()
         {
             base.MapComponentTick();
+            //SetPawnKinds();
 
-            Log.Message("Cached Ghosts: " + Ghosts.Count().ToString().Colorize(debugColor1));
+            /*if (!HumanGhosts.NullOrEmpty())
+            {
+                //Log.Message("Cached Ghosts: " + HumanGhosts.Count().ToString().Colorize(debugColor1));
+                for (int i = 0; i < HumanGhosts.Count; i++)
+                {
+                    Log.Message(HumanGhosts[i].Name.ToString().Colorize(debugColor1) + " BodyTypeDef equates to: " + HumanGhosts[i].kindDef.defName.ToString().Colorize(debugColor2));
+                }
+            }*/
         }
 
         public override void FinalizeInit()
@@ -35,7 +45,47 @@ namespace Ghosts
         public override void ExposeData()
         {
             base.ExposeData();
-            Scribe_Collections.Look(ref Ghosts, "Ghosts", LookMode.Deep);
+            Scribe_Collections.Look(ref HumanGhosts, "HumanGhosts", LookMode.Deep);
+            Scribe_Collections.Look(ref AnimalSpirits, "AnimalSpirits", LookMode.Deep);
         }
+
+        /*public void SetPawnKinds()
+        {
+            for (int i = 0; i < HumanGhosts.Count; i++)
+            {
+
+                if (HumanGhosts[i].IsColonist && HumanGhosts[i].story.bodyType != null)
+                {
+                    if (HumanGhosts[i].story.bodyType == BodyTypeDefOf.Female)
+                    {
+                        HumanGhosts[i].kindDef = GhostsDefOf.SZ_GhostFemaleBody;
+                    }
+                    else if (HumanGhosts[i].story.bodyType == BodyTypeDefOf.Fat)
+                    {
+                        HumanGhosts[i].kindDef = GhostsDefOf.SZ_GhostFatBody;
+                    }
+                    else if (HumanGhosts[i].story.bodyType == BodyTypeDefOf.Hulk)
+                    {
+                        HumanGhosts[i].kindDef = GhostsDefOf.SZ_GhostHulkBody;
+                    }
+                    else if (HumanGhosts[i].story.bodyType == BodyTypeDefOf.Thin)
+                    {
+                        HumanGhosts[i].kindDef = GhostsDefOf.SZ_GhostThinBody;
+                    }
+                    else if (HumanGhosts[i].story.bodyType == BodyTypeDefOf.Baby)
+                    {
+                        HumanGhosts[i].kindDef = GhostsDefOf.SZ_GhostBabyBody;
+                    }
+                    else if (HumanGhosts[i].story.bodyType == BodyTypeDefOf.Child)
+                    {
+                        HumanGhosts[i].kindDef = GhostsDefOf.SZ_GhostChildBody;
+                    }
+                    else
+                    {
+                        HumanGhosts[i].kindDef = GhostsDefOf.SZ_GhostMaleBody;
+                    }
+                }
+            }
+        }*/
     }
 }

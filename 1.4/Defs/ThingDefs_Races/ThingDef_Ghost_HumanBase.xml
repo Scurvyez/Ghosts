@@ -16,13 +16,13 @@
             <Flammability>0.0</Flammability>
         </statBases>
         <race>
+            <thinkTreeMain>SZ_GhostMain</thinkTreeMain>
+            <thinkTreeConstant>SZ_GhostConstant</thinkTreeConstant>
             <body>Human</body> <!-- PLACEHOLDER -->
-            <herdAnimal>false</herdAnimal>
             <baseBodySize>1.0</baseBodySize>
             <baseHealthScale>1.0</baseHealthScale>
-            <baseHungerRate>0.0000001</baseHungerRate> <!-- PLACEHOLDER -->
-            <foodType>OmnivoreRoughAnimal</foodType> <!-- PLACEHOLDER -->
-            <wildness>1.00</wildness>
+            <needsRest>false</needsRest>
+			<foodType>None</foodType>
             <canBePredatorPrey>false</canBePredatorPrey>
             <trainability>None</trainability>
             <nameOnTameChance>0</nameOnTameChance>
@@ -31,10 +31,6 @@
                 <li>
                     <def>AnimalAdult</def>
                     <minAge>0.1</minAge>
-                    <soundWounded>Pawn_Spelopede_Pain</soundWounded>
-                    <soundDeath>Pawn_Spelopede_Death</soundDeath>
-                    <soundCall>Pawn_Spelopede_Call</soundCall>
-                    <soundAngry>Pawn_Spelopede_Angry</soundAngry>
                 </li>
             </lifeStageAges>
             <soundMeleeHitPawn>Pawn_Melee_SmallScratch_HitPawn</soundMeleeHitPawn>
@@ -45,11 +41,11 @@
 
     <!--==================== Ghost PawnKindDef Base ====================-->
 
-    <PawnKindDef ParentName="BasePlayerPawnKind" Name="SZ_GhostBaseKind">
+    <PawnKindDef Name="SZ_GhostBaseKind">
         <defName>SZ_GhostBaseKind</defName>
         <label>ghost</label>
         <race>SZ_GhostBaseThing</race>
-        <combatPower>0</combatPower> <!-- change maybe? -->
+        <combatPower>1</combatPower> <!-- change maybe? -->
         <canArriveManhunter>true</canArriveManhunter>
         <ecoSystemWeight>0.0001</ecoSystemWeight>
         <lifeStages>
@@ -67,6 +63,7 @@
                 </dessicatedBodyGraphicData>
             </li>
         </lifeStages>
+        <initialResistanceRange>0~2</initialResistanceRange>
     </PawnKindDef>
 
 </Defs>

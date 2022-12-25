@@ -70,22 +70,6 @@
                         </damageData>
                     </li>
                 </graphicsExtra>
-                <graphicsChristmas>
-                    <li>
-                        <texPath>Things/Holidays/Christmas/SantaHat</texPath>
-					    <graphicClass>Graphic_Single</graphicClass>
-                        <shaderType>TransparentPostLight</shaderType>
-                        <drawOffset>(0.0, 1.5, 0.0)</drawOffset>
-                        <!-- <shaderParameters>
-                            <_distortionScale>1</_distortionScale>
-                            <_distortionIntensity>0.083</_distortionIntensity>
-                            <_DistortionTex>/Other/Ripples</_DistortionTex>
-                        </shaderParameters> -->
-                        <damageData>
-                            <enabled>false</enabled>
-                        </damageData>
-                    </li>
-                </graphicsChristmas>
             </li>
         </comps>
     </ThingDef>

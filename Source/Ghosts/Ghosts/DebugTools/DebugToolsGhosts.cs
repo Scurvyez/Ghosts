@@ -14,12 +14,12 @@ namespace Ghosts
 {
     public static class DebugToolsGhosts
     {
-		[DebugAction("Ghost Spawning", null, false, false, false, 0, false, allowedGameStates = AllowedGameStates.PlayingOnMap, displayPriority = 1000)]
+		[DebugAction("Ghost Utils", "Ghost Spawning", false, false, false, 0, false, allowedGameStates = AllowedGameStates.PlayingOnMap, displayPriority = 1000)]
 		private static List<DebugActionNode> SpawnGhost()
 		{
 			List<DebugActionNode> list = new List<DebugActionNode>();
 			MapComponent_StoreGhostPawns mapComp = Find.CurrentMap.GetComponent<MapComponent_StoreGhostPawns>();
-			List<Pawn> savedGhosts = mapComp.Ghosts;
+			List<Pawn> savedGhosts = mapComp.HumanGhosts;
 
 			if (savedGhosts != null)
             {
@@ -30,7 +30,42 @@ namespace Ghosts
 					{
 						action = delegate
 						{
-							Pawn ghostToSpawn = PawnGenerator.GeneratePawn(ghosty.kindDef, ghosty.Faction);
+							for (int i = 0; i < savedGhosts.Count; i++)
+                            {
+                                if (savedGhosts[i].IsColonist && savedGhosts[i].story.bodyType != null)
+                                {
+                                    if (savedGhosts[i].story.bodyType == BodyTypeDefOf.Female)
+                                    {
+                                        savedGhosts[i].kindDef = GhostsDefOf.SZ_GhostFemaleBody;
+                                    }
+                                    else if (savedGhosts[i].story.bodyType == BodyTypeDefOf.Fat)
+                                    {
+                                        savedGhosts[i].kindDef = GhostsDefOf.SZ_GhostFatBody;
+                                    }
+                                    else if (savedGhosts[i].story.bodyType == BodyTypeDefOf.Hulk)
+                                    {
+                                        savedGhosts[i].kindDef = GhostsDefOf.SZ_GhostHulkBody;
+                                    }
+                                    else if (savedGhosts[i].story.bodyType == BodyTypeDefOf.Thin)
+                                    {
+                                        savedGhosts[i].kindDef = GhostsDefOf.SZ_GhostThinBody;
+                                    }
+                                    else if (savedGhosts[i].story.bodyType == BodyTypeDefOf.Baby)
+                                    {
+                                        savedGhosts[i].kindDef = GhostsDefOf.SZ_GhostBabyBody;
+                                    }
+                                    else if (savedGhosts[i].story.bodyType == BodyTypeDefOf.Child)
+                                    {
+                                        savedGhosts[i].kindDef = GhostsDefOf.SZ_GhostChildBody;
+                                    }
+                                    else
+                                    {
+                                        savedGhosts[i].kindDef = GhostsDefOf.SZ_GhostMaleBody;
+                                    }
+                                }
+                            }
+
+                            Pawn ghostToSpawn = PawnGenerator.GeneratePawn(ghosty.kindDef, ghosty.Faction);
 							GenSpawn.Spawn(ghostToSpawn, UI.MouseCell(), Find.CurrentMap);
 						}
 					});

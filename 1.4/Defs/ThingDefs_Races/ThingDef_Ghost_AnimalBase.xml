@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Defs>
+
+    <!--==================== Animal Ghost ThingDef Base ====================-->
+
+    <ThingDef ParentName="AnimalThingBase" Name="SZ_AnimalGhostBaseThing">
+        <defName>SZ_AnimalGhostBaseThing</defName>
+        <label>ghost</label>
+        <description>PLACEHOLDER</description>
+        <statBases>
+            <MoveSpeed>0.6</MoveSpeed>
+            <ComfyTemperatureMin>-500</ComfyTemperatureMin>
+            <ComfyTemperatureMax>500</ComfyTemperatureMax>
+            <MeatAmount>0</MeatAmount>
+            <Flammability>0.0</Flammability>
+        </statBases>
+        <race>
+            <thinkTreeMain>SZ_GhostMain</thinkTreeMain>
+            <thinkTreeConstant>SZ_GhostConstant</thinkTreeConstant>
+            <body>Human</body> <!-- PLACEHOLDER -->
+            <herdAnimal>false</herdAnimal>
+            <baseBodySize>1.0</baseBodySize>
+            <baseHealthScale>1.0</baseHealthScale>
+            <needsRest>false</needsRest>
+			<hasGenders>false</hasGenders>
+			<foodType>None</foodType>
+            <wildness>1.00</wildness>
+            <canBePredatorPrey>false</canBePredatorPrey>
+            <trainability>None</trainability>
+            <nameOnTameChance>0</nameOnTameChance>
+            <lifeExpectancy>500</lifeExpectancy>
+            <lifeStageAges>
+                <li>
+                    <def>AnimalAdult</def>
+                    <minAge>0.1</minAge>
+                </li>
+            </lifeStageAges>
+            <soundMeleeHitPawn>Pawn_Melee_SmallScratch_HitPawn</soundMeleeHitPawn>
+            <soundMeleeHitBuilding>Pawn_Melee_SmallScratch_HitBuilding</soundMeleeHitBuilding>
+            <soundMeleeMiss>Pawn_Melee_SmallScratch_Miss</soundMeleeMiss>
+        </race>
+    </ThingDef>
+
+    <!--==================== Animal Ghost PawnKindDef Base ====================-->
+
+    <PawnKindDef ParentName="AnimalKindBase" Name="SZ_AnimalGhostBaseKind">
+        <defName>SZ_AnimalGhostBaseKind</defName>
+        <label>ghost</label>
+        <race>SZ_AnimalGhostBaseThing</race>
+        <combatPower>0</combatPower> <!-- change maybe? -->
+        <canArriveManhunter>true</canArriveManhunter>
+        <ecoSystemWeight>0.0001</ecoSystemWeight>
+        <lifeStages>
+            <li>
+                <bodyGraphicData>
+                    <texPath>Things/Pawn/Blank</texPath>
+                    <drawSize>4.0</drawSize>
+                    <shaderType>
+                        <li>Transparent</li>
+                    </shaderType>
+                </bodyGraphicData>
+                <dessicatedBodyGraphicData>
+                    <texPath>Things/Pawn/Blank</texPath>
+                    <drawSize>4.0</drawSize>
+                </dessicatedBodyGraphicData>
+            </li>
+        </lifeStages>
+    </PawnKindDef>
+
+</Defs>
