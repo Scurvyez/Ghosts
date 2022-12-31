@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <AbilityDef>
+        <defName>SZ_RaiseDead</defName>
+        <label>raise dead</label>
+        <description>Raises a fallen colonist to aid in trying times.</description> <!-- PLACEHOLDER -->
+        <groupDef>Leader</groupDef>
+        <iconPath>UI/Abilities/RaiseDead</iconPath> <!-- PLACEHOLDER -->
+        <warmupMoteSocialSymbol>UI/Abilities/RaiseDead</warmupMoteSocialSymbol> <!-- PLACEHOLDER -->
+        <warmupSound>MoralistAbility_Warmup</warmupSound> <!-- PLACEHOLDER -->
+        <hotKey>Misc12</hotKey>
+        <jobDef>CastAbilityOnThingUninterruptible</jobDef> <!-- PLACEHOLDER -->
+        <targetRequired>False</targetRequired>
+        <showCastingProgressBar>True</showCastingProgressBar>
+        <showPsycastEffects>False</showPsycastEffects> <!-- PLACEHOLDER -->
+        <displayGizmoWhileUndrafted>True</displayGizmoWhileUndrafted>
+        <disableGizmoWhileUndrafted>False</disableGizmoWhileUndrafted>
+        <uiOrder>2</uiOrder>
+        <showWhenDrafted>true</showWhenDrafted>
+        <hostile>false</hostile>
+        <comps>
+            <li Class="Ghosts.CompProperties_AbilityRaiseDead">
+                <successMessage>{INITIATOR_labelShort} has spoken to the souls of the colony. </successMessage>
+                <sound>MoralistAbility_Resolve</sound> <!-- PLACEHOLDER -->
+            </li>
+            <li Class="CompProperties_AbilityMustBeCapableOf">
+                <workTags>
+                    <li>Intellectual</li>
+                </workTags>
+            </li>
+        </comps>
+        <verbProperties>
+            <verbClass>Verb_CastAbility</verbClass>
+            <warmupTime>5</warmupTime>
+            <drawAimPie>False</drawAimPie>
+            <requireLineOfSight>False</requireLineOfSight>
+            <nonInterruptingSelfCast>true</nonInterruptingSelfCast>
+            <targetParams>
+              <canTargetSelf>True</canTargetSelf>
+            </targetParams>
+        </verbProperties>
+    </AbilityDef>
+
+</Defs>

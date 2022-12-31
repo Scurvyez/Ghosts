@@ -32,19 +32,34 @@ namespace Ghosts
                 // placeholder pawn object generation
                 PawnGenerationRequest request = new PawnGenerationRequest(
                     GhostsDefOf.SZ_GhostFemaleBody, __instance.Faction, PawnGenerationContext.NonPlayer, forceGenerateNewPawn: true, 
-                    canGeneratePawnRelations: false, allowFood: false, allowAddictions: false, fixedBiologicalAge: 0, fixedChronologicalAge: 0, 
+                    canGeneratePawnRelations: false, allowFood: false, allowAddictions: false, fixedBiologicalAge: 0, fixedChronologicalAge: 0, fixedGender: __instance.gender, 
                     fixedIdeo: null, forceNoIdeo: true, forceBaselinerChance: 1f);
+
+                // set the ghost pawnKind to that of the matching dead pawns' bodyType
+                if (__instance.story.bodyType == BodyTypeDefOf.Female)
+                {
+                    request.KindDef = GhostsDefOf.SZ_GhostFemaleBody;
+                }
+                else if (__instance.story.bodyType == BodyTypeDefOf.Fat)
+                {
+                    request.KindDef = GhostsDefOf.SZ_GhostFatBody;
+                }
+                else
+                {
+                    request.KindDef = GhostsDefOf.SZ_GhostHulkBody;
+                }
+
                 Pawn ghost = PawnGenerator.GeneratePawn(request);
                 // this ensures the placeholder pawn doesn't spawn with apparel as it's not needed here
                 ghost.apparel?.DestroyAll();
 
                 // name of temp pawn before duping
-                Log.Message("Successful generation of: " + ghost.Name.ToString().Colorize(debugColor1) + " , as a placeholder pawn");
+                //Log.Message("Successful generation of: " + ghost.Name.ToString().Colorize(debugColor1) + " , as a placeholder pawn");
 
                 PawnDataDuplication.Duplicate(__instance, ghost);
 
                 // name of finalized pawn after duping for storage in MapComp
-                Log.Message("All pertinent data for " + ghost.Name.ToString().Colorize(debugColor2) + " duplicated successfully.");
+                //Log.Message("All pertinent data for " + ghost.Name.ToString().Colorize(debugColor2) + " duplicated successfully.");
 
                 // storage in MapComp
                 __instance.MapHeld.GetComponent<MapComponent_StoreGhostPawns>().HumanGhosts.Add(ghost);

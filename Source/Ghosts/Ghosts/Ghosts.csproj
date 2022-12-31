@@ -57,6 +57,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abilities\Comp_AbilityRaiseDead.cs" />
+    <Compile Include="Abilities\CompProps\CompProperties_AbilityRaiseDead.cs" />
     <Compile Include="DebugTools\DebugToolsGhosts.cs" />
     <Compile Include="MapComps\MapComponent_StoreGhostPawns.cs" />
     <Compile Include="GhostsMain.cs" />

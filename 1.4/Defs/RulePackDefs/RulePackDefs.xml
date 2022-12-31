@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <RulePackDef>
+        <defName>SZ_NamerRoleMedium</defName>
+        <include>
+            <li>NamerRoleSpecialistUtility</li>
+        </include>
+        <rulePack>
+            <rulesStrings>
+                <li>r_roleName->medium</li>
+                <li>firstPart->leaf</li> <!-- PLACEHOLDER -->
+                <li>firstPart->plant</li>
+                <li>firstPart->green</li>
+                <li>firstPart->sprout</li>
+                <li>firstPart->garden</li>
+                <li>firstPart->flora</li>
+                <li>firstPart->herb</li>
+                <li>firstPart->crop</li>
+                <li>firstPart->farm</li>
+                <li>firstPart->land</li>
+                <li>firstPart->dirt</li>
+                <li>firstPart->seed</li>
+                <li>firstPart->soil</li>
+                <li>firstPart->root</li>
+            </rulesStrings>
+        </rulePack>
+    </RulePackDef>
+
+</Defs>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <DutyDef>
+        <defName>SZ_PerformSeance</defName>
+        <hook>MediumPriority</hook>
+        <socialModeMax>Off</socialModeMax>
+        <thinkNode Class="ThinkNode_Priority">
+            <subNodes>
+                <!-- Goto my spot -->
+                <li Class="JobGiver_GotoTravelDestination">
+                    <exactCell>true</exactCell>
+                    <locomotionUrgency>Jog</locomotionUrgency>
+                    <ritualTagOnArrival>Arrived</ritualTagOnArrival>
+                </li>
+
+                <!-- Arrived -->
+                <li Class="ThinkNode_ConditionalAtDutyLocation">
+                    <subNodes>
+                        <li Class="JobGiver_GiveSpeech">
+                            <soundDefMale>Speech_Throne_Male</soundDefMale>
+                            <soundDefFemale>Speech_Throne_Female</soundDefFemale>
+                        </li>
+                    </subNodes>
+                </li>
+
+                <li Class="ThinkNode_ConditionalInGatheringArea">
+                    <subNodes>
+                        <li Class="ThinkNode_ConditionalRandom">
+                            <chance>0.1</chance>
+                            <subNodes>
+                                <li Class="JobGiver_GetJoyInGatheringArea" />
+                            </subNodes>
+                        </li>
+
+                        <li Class="ThinkNode_ConditionalHasHediff"> <!-- PLACEHOLDER -->
+                            <hediff>PsychicBond</hediff>
+                            <severityRange>0.4~0.6</severityRange>
+                        </li>
+
+                        <li Class="ThinkNode_ConditionalRandom">
+                            <chance>0.1</chance>
+                            <subNodes>
+                                <li Class="JobGiver_GetJoyInGatheringArea" /> <!-- MAKE A NEW JOB CLASS TO GIVE A THOUGHT -->
+                            </subNodes>
+                        </li>
+                    </subNodes>
+                </li>
+            </subNodes>
+        </thinkNode>
+    </DutyDef>
+
+</Defs>

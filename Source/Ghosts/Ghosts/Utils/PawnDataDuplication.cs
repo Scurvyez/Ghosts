@@ -109,7 +109,7 @@ namespace Ghosts
             }
         }
 
-        public static Pawn SpawnCopy(Pawn pawn, bool kill = true)
+        public static Pawn SpawnCopy(Pawn pawn)
         {
             // Generate a new pawn.
             PawnGenerationRequest request = new PawnGenerationRequest(pawn.kindDef, faction: null, context: PawnGenerationContext.NonPlayer, fixedBiologicalAge: pawn.ageTracker.AgeBiologicalYearsFloat, fixedChronologicalAge: pawn.ageTracker.AgeChronologicalYearsFloat, fixedGender: pawn.gender);

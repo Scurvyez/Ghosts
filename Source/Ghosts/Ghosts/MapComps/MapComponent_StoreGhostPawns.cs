@@ -25,8 +25,6 @@ namespace Ghosts
         public override void MapComponentTick()
         {
             base.MapComponentTick();
-            //SetPawnKinds();
-
             /*if (!HumanGhosts.NullOrEmpty())
             {
                 //Log.Message("Cached Ghosts: " + HumanGhosts.Count().ToString().Colorize(debugColor1));
@@ -48,44 +46,5 @@ namespace Ghosts
             Scribe_Collections.Look(ref HumanGhosts, "HumanGhosts", LookMode.Deep);
             Scribe_Collections.Look(ref AnimalSpirits, "AnimalSpirits", LookMode.Deep);
         }
-
-        /*public void SetPawnKinds()
-        {
-            for (int i = 0; i < HumanGhosts.Count; i++)
-            {
-
-                if (HumanGhosts[i].IsColonist && HumanGhosts[i].story.bodyType != null)
-                {
-                    if (HumanGhosts[i].story.bodyType == BodyTypeDefOf.Female)
-                    {
-                        HumanGhosts[i].kindDef = GhostsDefOf.SZ_GhostFemaleBody;
-                    }
-                    else if (HumanGhosts[i].story.bodyType == BodyTypeDefOf.Fat)
-                    {
-                        HumanGhosts[i].kindDef = GhostsDefOf.SZ_GhostFatBody;
-                    }
-                    else if (HumanGhosts[i].story.bodyType == BodyTypeDefOf.Hulk)
-                    {
-                        HumanGhosts[i].kindDef = GhostsDefOf.SZ_GhostHulkBody;
-                    }
-                    else if (HumanGhosts[i].story.bodyType == BodyTypeDefOf.Thin)
-                    {
-                        HumanGhosts[i].kindDef = GhostsDefOf.SZ_GhostThinBody;
-                    }
-                    else if (HumanGhosts[i].story.bodyType == BodyTypeDefOf.Baby)
-                    {
-                        HumanGhosts[i].kindDef = GhostsDefOf.SZ_GhostBabyBody;
-                    }
-                    else if (HumanGhosts[i].story.bodyType == BodyTypeDefOf.Child)
-                    {
-                        HumanGhosts[i].kindDef = GhostsDefOf.SZ_GhostChildBody;
-                    }
-                    else
-                    {
-                        HumanGhosts[i].kindDef = GhostsDefOf.SZ_GhostMaleBody;
-                    }
-                }
-            }
-        }*/
     }
 }

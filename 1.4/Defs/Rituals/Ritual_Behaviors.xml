@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <RitualBehaviorDef>
+        <defName>SZ_Seance</defName>
+        <workerClass>RitualBehaviorWorker_ThroneSpeech</workerClass>
+        <durationTicks>5000</durationTicks>
+        <letterTitle>Seance with the dead</letterTitle>
+        <letterText>{ORGANIZER_labelShort} is attempting to contact the dead.
+            \nIf all goes well, attendees will feel relaxed, and gain respect for
+            {ORGANIZER_labelShort}. If it goes poorly, the speech will do social damage. The outcome
+            depends on {ORGANIZER_labelShort}'s social abilities.</letterText> <!-- PLACEHOLDER -->
+        <roles>
+            <li Class="RitualRoleOrganizer">
+                <label>medium</label>
+                <id>medium</id>
+                <maxCount>1</maxCount>
+                <allowChild>false</allowChild>
+            </li>
+        </roles>
+        <stages>
+            <li Class="RitualStage_OnTheThrone"> <!-- MAKE A NEW BUILDING WITH thingClass = Building_Throne -->
+                <defaultDuty>Spectate</defaultDuty>
+                <spectatorsRequired>true</spectatorsRequired>
+                <endTriggers>
+                    <li Class="StageEndTrigger_DurationPercentage">
+                        <percentage>1.0</percentage>
+                    </li>
+                </endTriggers>
+                <roleBehaviors>
+                    <li>
+                        <roleId>medium</roleId>
+                        <dutyDef>SZ_PerformSeance</dutyDef>
+                    </li>
+                </roleBehaviors>
+                <visualEffectDef>Speech</visualEffectDef> <!-- MAKE A NEW ONE -->
+            </li>
+        </stages>
+    </RitualBehaviorDef>
+
+</Defs>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <PreceptDef ParentName="PreceptRoleMultiBase">
+        <defName>SZ_RoleMedium</defName>
+        <label>medium</label>
+        <description>Mediums are capable of speaking directly to the dead; souls once full of vigor,
+            now left to wanter the eternal abyss.</description> <!-- PLACEHOLDER -->
+        <iconPath>UI/Roles/Medium</iconPath>
+        <nameMaker>SZ_NamerRoleMedium</nameMaker>
+        <roleRequirements>
+            <li Class="RoleRequirement_MinSkillAny">
+                <skills>
+                    <Intellectual>7</Intellectual>
+                </skills>
+            </li>
+        </roleRequirements>
+        <roleRequiredWorkTags>
+            <li>Intellectual</li>
+        </roleRequiredWorkTags>
+        <roleTags>
+            <li>SZ_Medium</li>
+        </roleTags>
+        <roleEffects>
+            <li Class="RoleEffect_PawnStatOffset">
+                <statDef>SZ_Clairvoyance</statDef>
+                <modifier>7</modifier>
+            </li>
+        </roleEffects>
+        <grantedAbilities>
+            <li>SZ_RaiseDead</li> <!-- PLACEHOLDER -->
+        </grantedAbilities>
+        <displayOrderInImpact>2</displayOrderInImpact>
+    </PreceptDef>
+
+</Defs>

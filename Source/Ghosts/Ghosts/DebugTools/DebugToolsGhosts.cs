@@ -30,41 +30,6 @@ namespace Ghosts
 					{
 						action = delegate
 						{
-							for (int i = 0; i < savedGhosts.Count; i++)
-                            {
-                                if (savedGhosts[i].IsColonist && savedGhosts[i].story.bodyType != null)
-                                {
-                                    if (savedGhosts[i].story.bodyType == BodyTypeDefOf.Female)
-                                    {
-                                        savedGhosts[i].kindDef = GhostsDefOf.SZ_GhostFemaleBody;
-                                    }
-                                    else if (savedGhosts[i].story.bodyType == BodyTypeDefOf.Fat)
-                                    {
-                                        savedGhosts[i].kindDef = GhostsDefOf.SZ_GhostFatBody;
-                                    }
-                                    else if (savedGhosts[i].story.bodyType == BodyTypeDefOf.Hulk)
-                                    {
-                                        savedGhosts[i].kindDef = GhostsDefOf.SZ_GhostHulkBody;
-                                    }
-                                    else if (savedGhosts[i].story.bodyType == BodyTypeDefOf.Thin)
-                                    {
-                                        savedGhosts[i].kindDef = GhostsDefOf.SZ_GhostThinBody;
-                                    }
-                                    else if (savedGhosts[i].story.bodyType == BodyTypeDefOf.Baby)
-                                    {
-                                        savedGhosts[i].kindDef = GhostsDefOf.SZ_GhostBabyBody;
-                                    }
-                                    else if (savedGhosts[i].story.bodyType == BodyTypeDefOf.Child)
-                                    {
-                                        savedGhosts[i].kindDef = GhostsDefOf.SZ_GhostChildBody;
-                                    }
-                                    else
-                                    {
-                                        savedGhosts[i].kindDef = GhostsDefOf.SZ_GhostMaleBody;
-                                    }
-                                }
-                            }
-
                             Pawn ghostToSpawn = PawnGenerator.GeneratePawn(ghosty.kindDef, ghosty.Faction);
 							GenSpawn.Spawn(ghostToSpawn, UI.MouseCell(), Find.CurrentMap);
 						}
