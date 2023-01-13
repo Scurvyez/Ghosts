@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+    <SZ_DisappearAfterTime_TimeRemaining> will be returning to the void in {0}</SZ_DisappearAfterTime_TimeRemaining>
+    <SZ_AbilityRaiseDead_EmptyGhostCache> No colonists have perished on the player map yet. Rejoice!</SZ_AbilityRaiseDead_EmptyGhostCache>
+
+</LanguageData>

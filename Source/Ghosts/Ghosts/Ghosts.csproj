@@ -60,10 +60,16 @@
     <Compile Include="Abilities\Comp_AbilityRaiseDead.cs" />
     <Compile Include="Abilities\CompProps\CompProperties_AbilityRaiseDead.cs" />
     <Compile Include="DebugTools\DebugToolsGhosts.cs" />
+    <Compile Include="GameComps\GameComponent_StoreGhostPawns.cs" />
+    <Compile Include="HediffComps\CompProperties\HediffCompProperties_DisappearAfterTime.cs" />
+    <Compile Include="HediffComps\HediffComp_DisappearAfterTime.cs" />
     <Compile Include="MapComps\MapComponent_StoreGhostPawns.cs" />
     <Compile Include="GhostsMain.cs" />
     <Compile Include="DefOfs\GhostsDefOf.cs" />
     <Compile Include="Harmony\Pawn_Postfix.cs" />
+    <Compile Include="Stats\Workers\StatWorker_Clairvoyance.cs" />
+    <Compile Include="ThingComps\CompProperties\CompProperties_PawnTextureGeneration.cs" />
+    <Compile Include="ThingComps\Comp_PawnTextureGeneration.cs" />
     <Compile Include="ThingComps\Comp_GiveThought.cs" />
     <Compile Include="ThingComps\CompProperties\CompProperties_GiveThought.cs" />
     <Compile Include="ThingComps\Comp_PawnSawGhost.cs" />
@@ -71,11 +77,14 @@
     <Compile Include="ThingComps\Comp_ExtraPawnGraphics.cs" />
     <Compile Include="ThingComps\CompProperties\CompProperties_ExtraPawnGraphics.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Thoughts\Thought_MemorySawGhost.cs" />
     <Compile Include="Utils\PawnDataDuplication.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Thoughts\Workers\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

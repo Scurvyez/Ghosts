@@ -13,7 +13,7 @@ namespace Ghosts
     public class PawnDataDuplication
     {
         /// <summary>
-        /// Duplicate a dead pawns ideo, relations, and name.
+        /// Duplicate a dead pawns ideo, relations, name, and graphics.
         /// </summary>
         public static void Duplicate(Pawn sourcePawn, Pawn destinationPawn)
         {
@@ -33,11 +33,13 @@ namespace Ghosts
 
                 NameTriple sourcePawnName = (NameTriple)sourcePawn.Name;
                 destinationPawn.Name = new NameTriple(sourcePawnName.First, sourcePawnName.Nick, sourcePawnName.Last);
-                destinationPawn.Drawer.renderer.graphics.ResolveAllGraphics();
+
+                sourcePawn.Drawer.renderer.graphics.ResolveAllGraphics();
+                destinationPawn.Drawer.renderer.graphics = sourcePawn.Drawer.renderer.graphics;
             }
             catch(Exception exception)
             {
-                Log.Error("[Ghosts] PawnDataDuplication.Duplicate: Error occurred duplicating " + sourcePawn + " into " + destinationPawn + ". This will have severe consequences. " + exception.Message + exception.StackTrace);
+                Log.Error("[<color=#4494E3FF>Ghosts</color>] PawnDataDuplication.Duplicate: Error occurred duplicating " + sourcePawn + " into " + destinationPawn + ". This will have severe consequences. " + exception.Message + exception.StackTrace);
             }
         }
 
@@ -59,7 +61,7 @@ namespace Ghosts
             }
             catch (Exception exception)
             {
-                Log.Warning("[Ghosts] An unexpected error occurred during ideology duplication between " + sourcePawn + " " + destinationPawn + ". The destination IdeoTracker may be left unstable!" + exception.Message + exception.StackTrace);
+                Log.Warning("[<color=#4494E3FF>Ghosts</color>] An unexpected error occurred during ideology duplication between " + sourcePawn + " " + destinationPawn + ". The destination IdeoTracker may be left unstable!" + exception.Message + exception.StackTrace);
             }
         }
 
@@ -105,7 +107,7 @@ namespace Ghosts
             }
             catch (Exception exception)
             {
-                Log.Warning("[Ghosts] An unexpected error occurred during relation duplication between " + sourcePawn + " " + destinationPawn + ". The destination RelationTracker may be left unstable!" + exception.Message + exception.StackTrace);
+                Log.Warning("[<color=#4494E3FF>Ghosts</color>] An unexpected error occurred during relation duplication between " + sourcePawn + " " + destinationPawn + ". The destination RelationTracker may be left unstable!" + exception.Message + exception.StackTrace);
             }
         }
 

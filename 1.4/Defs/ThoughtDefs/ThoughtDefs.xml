@@ -6,10 +6,12 @@
 
     <ThoughtDef>
         <defName>SZ_SawGhost_Soothed</defName>
-        <!-- <workerClass>Ghosts.ThoughtWorker_SawGhost</workerClass> -->
+        <thoughtClass>Ghosts.Thought_MemorySawGhost</thoughtClass>
         <icon>Things/Pawn/Blank_east</icon>
         <showBubble>false</showBubble>
         <durationDays>0.10</durationDays>
+        <effectMultiplyingStat>SZ_Clairvoyance</effectMultiplyingStat>
+        <!-- <stackedEffectMultiplier>0.5</stackedEffectMultiplier> -->
         <stackLimit>1</stackLimit>
         <stages>
             <li>
@@ -24,10 +26,11 @@
 
     <ThoughtDef>
         <defName>SZ_SawGhost_Scared</defName>
-        <!-- <workerClass>Ghosts.ThoughtWorker_SawGhost</workerClass> -->
+        <thoughtClass>Thought_Memory</thoughtClass>
         <icon>Things/Pawn/Blank_east</icon>
         <showBubble>false</showBubble>
         <durationDays>0.10</durationDays>
+        <!-- <stackedEffectMultiplier>0.5</stackedEffectMultiplier> -->
         <stackLimit>1</stackLimit>
         <nullifyingTraits>
             <li>Psychopath</li>
@@ -37,7 +40,7 @@
             <li>
                 <label>saw ghost</label>
                 <description>{PAWN_nameDef} saw a ghost! Fear has taken hold of {PAWN_nameDef} body!</description>
-                <baseMoodEffect>-7</baseMoodEffect>
+                <baseMoodEffect>-3</baseMoodEffect>
             </li>
         </stages>
     </ThoughtDef>
@@ -46,7 +49,7 @@
 
     <ThoughtDef>
         <defName>SZ_SawSpiritAnimal</defName>
-        <!-- <workerClass>Ghosts.ThoughtWorker_SawGhost</workerClass> -->
+        <thoughtClass>Thought_Memory</thoughtClass>
         <icon>Things/Pawn/Blank_east</icon>
         <showBubble>false</showBubble>
         <durationDays>0.10</durationDays>

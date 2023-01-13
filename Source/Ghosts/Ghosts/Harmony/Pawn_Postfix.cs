@@ -31,12 +31,12 @@ namespace Ghosts
             {
                 // placeholder pawn object generation
                 PawnGenerationRequest request = new PawnGenerationRequest(
-                    GhostsDefOf.SZ_GhostFemaleBody, __instance.Faction, PawnGenerationContext.NonPlayer, forceGenerateNewPawn: true, 
-                    canGeneratePawnRelations: false, allowFood: false, allowAddictions: false, fixedBiologicalAge: 0, fixedChronologicalAge: 0, fixedGender: __instance.gender, 
+                    GhostsDefOf.SZ_GhostBaseKind, __instance.Faction, PawnGenerationContext.NonPlayer, forceGenerateNewPawn: true, 
+                    canGeneratePawnRelations: false, allowFood: false, allowAddictions: false, fixedBiologicalAge: 0, fixedChronologicalAge: 0, fixedGender: Gender.None, 
                     fixedIdeo: null, forceNoIdeo: true, forceBaselinerChance: 1f);
 
                 // set the ghost pawnKind to that of the matching dead pawns' bodyType
-                if (__instance.story.bodyType == BodyTypeDefOf.Female)
+                /*if (__instance.story.bodyType == BodyTypeDefOf.Female)
                 {
                     request.KindDef = GhostsDefOf.SZ_GhostFemaleBody;
                 }
@@ -47,7 +47,7 @@ namespace Ghosts
                 else
                 {
                     request.KindDef = GhostsDefOf.SZ_GhostHulkBody;
-                }
+                }*/
 
                 Pawn ghost = PawnGenerator.GeneratePawn(request);
                 // this ensures the placeholder pawn doesn't spawn with apparel as it's not needed here
@@ -62,7 +62,8 @@ namespace Ghosts
                 //Log.Message("All pertinent data for " + ghost.Name.ToString().Colorize(debugColor2) + " duplicated successfully.");
 
                 // storage in MapComp
-                __instance.MapHeld.GetComponent<MapComponent_StoreGhostPawns>().HumanGhosts.Add(ghost);
+                // DEPRECATED __instance.MapHeld.GetComponent<MapComponent_StoreGhostPawns>().HumanGhosts.Add(ghost);
+                Current.Game.GetComponent<GameComponent_StoreGhostPawns>().HumanGhosts.Add(ghost);
             }
         }
     }

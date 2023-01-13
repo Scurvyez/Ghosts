@@ -13,7 +13,7 @@ namespace Ghosts
     /// <summary>
     /// This class simply stores ghosts for later use in numerous methods.
     /// </summary>
-    public class MapComponent_StoreGhostPawns : MapComponent
+    public class GameComponent_StoreGhostPawns : GameComponent
     {
         public List<Pawn> HumanGhosts = new List<Pawn>();
         public List<Pawn> SpawnedHumanGhosts = new List<Pawn>();
@@ -21,11 +21,14 @@ namespace Ghosts
         public Color debugColor1 = new Color(0.145f, 0.588f, 0.745f, 1f);
         public Color debugColor2 = new Color(0.945f, 0.288f, 0.145f, 1f);
 
-        public MapComponent_StoreGhostPawns(Map map) : base(map) { }
-
-        public override void MapComponentTick()
+        public GameComponent_StoreGhostPawns(Game game)
         {
-            base.MapComponentTick();
+
+        }
+
+        public override void GameComponentTick()
+        {
+            base.GameComponentTick();
             /*if (!HumanGhosts.NullOrEmpty())
             {
                 //Log.Message("Cached Ghosts: " + HumanGhosts.Count().ToString().Colorize(debugColor1));

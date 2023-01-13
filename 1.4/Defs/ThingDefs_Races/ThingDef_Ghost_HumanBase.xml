@@ -8,6 +8,11 @@
         <defName>SZ_GhostBaseThing</defName>
         <label>ghost</label>
         <description>PLACEHOLDER</description>
+        <selectable>false</selectable>
+        <tickerType>Normal</tickerType>
+        <altitudeLayer>Pawn</altitudeLayer>
+        <useHitPoints>false</useHitPoints>
+        <hasTooltip>false</hasTooltip>
         <statBases>
             <MoveSpeed>0.6</MoveSpeed>
             <ComfyTemperatureMin>-500</ComfyTemperatureMin>
@@ -16,14 +21,19 @@
             <Flammability>0.0</Flammability>
         </statBases>
         <race>
-            <thinkTreeMain>SZ_GhostMain</thinkTreeMain>
-            <thinkTreeConstant>SZ_GhostConstant</thinkTreeConstant>
+            <thinkTreeMain>Humanlike</thinkTreeMain>
+            <thinkTreeConstant>HumanlikeConstant</thinkTreeConstant>
+            <intelligence>Humanlike</intelligence>
+            <nameCategory>HumanStandard</nameCategory>
             <body>Human</body> <!-- PLACEHOLDER -->
+            <hasGenders>false</hasGenders>
             <baseBodySize>1.0</baseBodySize>
             <baseHealthScale>1.0</baseHealthScale>
             <needsRest>false</needsRest>
 			<foodType>None</foodType>
             <canBePredatorPrey>false</canBePredatorPrey>
+            <canReleaseToWild>false</canReleaseToWild>
+            <hideTrainingTab>true</hideTrainingTab>
             <trainability>None</trainability>
             <nameOnTameChance>0</nameOnTameChance>
             <lifeExpectancy>500</lifeExpectancy>
@@ -37,6 +47,9 @@
             <soundMeleeHitBuilding>Pawn_Melee_SmallScratch_HitBuilding</soundMeleeHitBuilding>
             <soundMeleeMiss>Pawn_Melee_SmallScratch_Miss</soundMeleeMiss>
         </race>
+        <comps>
+            <li Class="Ghosts.CompProperties_PawnTextureGeneration" />
+        </comps>
     </ThingDef>
 
     <!--==================== Ghost PawnKindDef Base ====================-->
@@ -46,8 +59,8 @@
         <label>ghost</label>
         <race>SZ_GhostBaseThing</race>
         <combatPower>1</combatPower> <!-- change maybe? -->
-        <canArriveManhunter>true</canArriveManhunter>
-        <ecoSystemWeight>0.0001</ecoSystemWeight>
+        <initialWillRange>0</initialWillRange>
+        <initialResistanceRange>0~2</initialResistanceRange>
         <lifeStages>
             <li>
                 <bodyGraphicData>
@@ -63,7 +76,6 @@
                 </dessicatedBodyGraphicData>
             </li>
         </lifeStages>
-        <initialResistanceRange>0~2</initialResistanceRange>
     </PawnKindDef>
 
 </Defs>

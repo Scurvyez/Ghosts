@@ -11,7 +11,7 @@
         <roleRequirements>
             <li Class="RoleRequirement_MinSkillAny">
                 <skills>
-                    <Intellectual>7</Intellectual>
+                    <Intellectual>1</Intellectual> <!-- PLACEHOLDER -->
                 </skills>
             </li>
         </roleRequirements>
@@ -24,7 +24,7 @@
         <roleEffects>
             <li Class="RoleEffect_PawnStatOffset">
                 <statDef>SZ_Clairvoyance</statDef>
-                <modifier>7</modifier>
+                <modifier>2.5</modifier>
             </li>
         </roleEffects>
         <grantedAbilities>

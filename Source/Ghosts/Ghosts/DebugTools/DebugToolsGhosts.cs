@@ -18,8 +18,8 @@ namespace Ghosts
 		private static List<DebugActionNode> SpawnGhost()
 		{
 			List<DebugActionNode> list = new List<DebugActionNode>();
-			MapComponent_StoreGhostPawns mapComp = Find.CurrentMap.GetComponent<MapComponent_StoreGhostPawns>();
-			List<Pawn> savedGhosts = mapComp.HumanGhosts;
+			GameComponent_StoreGhostPawns gameComp = Current.Game.GetComponent<GameComponent_StoreGhostPawns>();
+			List<Pawn> savedGhosts = gameComp.HumanGhosts;
 
 			if (savedGhosts != null)
             {

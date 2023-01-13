@@ -73,6 +73,8 @@ GHOSTS!!!
                         - ghosts get angry from this?
                 - pawns want to go outside instead of sleep because they spotted a ghost before
                 - pawns not properly buried have a much higher chance to haunt the colony
+                - hediff that contains a time limit, so to speak, for the ghosts
+                    + once the hediff's severity reaches max, the ghost despawns
 
             + traits
                 - ghost-hunter, enjoys looking for ghosts, mood buffs

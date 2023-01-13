@@ -6,6 +6,7 @@
         <label>raise dead</label>
         <description>Raises a fallen colonist to aid in trying times.</description> <!-- PLACEHOLDER -->
         <groupDef>Leader</groupDef>
+        <overrideGroupCooldown>true</overrideGroupCooldown>
         <iconPath>UI/Abilities/RaiseDead</iconPath> <!-- PLACEHOLDER -->
         <warmupMoteSocialSymbol>UI/Abilities/RaiseDead</warmupMoteSocialSymbol> <!-- PLACEHOLDER -->
         <warmupSound>MoralistAbility_Warmup</warmupSound> <!-- PLACEHOLDER -->
@@ -19,9 +20,10 @@
         <uiOrder>2</uiOrder>
         <showWhenDrafted>true</showWhenDrafted>
         <hostile>false</hostile>
+        <cooldownTicksRange>3600~30000</cooldownTicksRange>
         <comps>
             <li Class="Ghosts.CompProperties_AbilityRaiseDead">
-                <successMessage>{INITIATOR_labelShort} has spoken to the souls of the colony. </successMessage>
+                <successMessage>{INITIATOR_labelShort} has spoken to the souls of the colony.</successMessage>
                 <sound>MoralistAbility_Resolve</sound> <!-- PLACEHOLDER -->
             </li>
             <li Class="CompProperties_AbilityMustBeCapableOf">
