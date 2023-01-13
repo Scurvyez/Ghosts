@@ -26,18 +26,23 @@ namespace Ghosts
 
                 DuplicatePawnRelations(ref sourcePawn, ref destinationPawn);
 
-                if (sourcePawn.Faction != destinationPawn.Faction)
+                /*if (sourcePawn.Faction != destinationPawn.Faction)
                 {
                     destinationPawn.SetFaction(sourcePawn.Faction);
-                }
+                }*/
 
                 NameTriple sourcePawnName = (NameTriple)sourcePawn.Name;
                 destinationPawn.Name = new NameTriple(sourcePawnName.First, sourcePawnName.Nick, sourcePawnName.Last);
 
+                // copy pawns' graphics
+                destinationPawn.Drawer.renderer.graphics = new PawnGraphicSet(destinationPawn);
+                destinationPawn.Drawer.renderer.graphics.nakedGraphic = sourcePawn.Drawer.renderer.graphics.nakedGraphic;
+                destinationPawn.Drawer.renderer.graphics.headGraphic = sourcePawn.Drawer.renderer.graphics.headGraphic;
+                destinationPawn.Drawer.renderer.graphics.hairGraphic = null;
+                destinationPawn.Drawer.renderer.graphics.beardGraphic = null;
                 sourcePawn.Drawer.renderer.graphics.ResolveAllGraphics();
-                destinationPawn.Drawer.renderer.graphics = sourcePawn.Drawer.renderer.graphics;
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
                 Log.Error("[<color=#4494E3FF>Ghosts</color>] PawnDataDuplication.Duplicate: Error occurred duplicating " + sourcePawn + " into " + destinationPawn + ". This will have severe consequences. " + exception.Message + exception.StackTrace);
             }

@@ -29,11 +29,8 @@ namespace Ghosts
         private void GetPawnMaterialAndMakeCopies()
         {
             Pawn parentPawn = parent as Pawn;
-            if (parentPawn != null && parentPawn.Map != null)
-            {
-                GlobalTextureAtlasManager.TryGetPawnFrameSet(parentPawn, out frameSet, out var _);
-                pawnMaterial = MaterialPool.MatFrom(new MaterialRequest(frameSet.atlas, ShaderDatabase.MoteGlowDistorted));
-            }
+            GlobalTextureAtlasManager.TryGetPawnFrameSet(parentPawn, out frameSet, out var _);
+            pawnMaterial = MaterialPool.MatFrom(new MaterialRequest(frameSet.atlas, ShaderDatabase.MoteGlowDistorted));
         }
 
         private void DrawPawnMaterial()
@@ -50,11 +47,7 @@ namespace Ghosts
                     frameSet.isDirty[index] = false;
                 }
 
-                for (int i = 0; i < 3; i++)
-                {
-                    pawnMaterialCopies[i] = new Material(pawnMaterial);
-                    pawnMaterialCopies[i].color = Color.white;
-                }
+                pawnMaterial.color = Color.white;
 
                 GenDraw.DrawMeshNowOrLater(
                         frameSet.meshes[index],

@@ -32,7 +32,7 @@ namespace Ghosts
                 // placeholder pawn object generation
                 PawnGenerationRequest request = new PawnGenerationRequest(
                     GhostsDefOf.SZ_GhostBaseKind, __instance.Faction, PawnGenerationContext.NonPlayer, forceGenerateNewPawn: true, 
-                    canGeneratePawnRelations: false, allowFood: false, allowAddictions: false, fixedBiologicalAge: 0, fixedChronologicalAge: 0, fixedGender: Gender.None, 
+                    canGeneratePawnRelations: false, allowFood: false, allowAddictions: false, fixedBiologicalAge: 0, fixedChronologicalAge: 0, fixedGender: __instance.gender, 
                     fixedIdeo: null, forceNoIdeo: true, forceBaselinerChance: 1f);
 
                 // set the ghost pawnKind to that of the matching dead pawns' bodyType
