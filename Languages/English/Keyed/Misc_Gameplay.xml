@@ -2,6 +2,7 @@
 <LanguageData>
 
     <SZ_DisappearAfterTime_TimeRemaining> will be returning to the void in {0}</SZ_DisappearAfterTime_TimeRemaining>
-    <SZ_AbilityRaiseDead_EmptyGhostCache> No colonists have perished on the player map yet. Rejoice!</SZ_AbilityRaiseDead_EmptyGhostCache>
+    <SZ_AbilityRaiseDead_NoneDead>You have no lost any colonists yet. Rejoice!</SZ_AbilityRaiseDead_NoneDead>
+    <SZ_AbilityRaiseDead_AllDeadSpawned>All available souls are present on the map. Embrace them!</SZ_AbilityRaiseDead_AllDeadSpawned>
 
 </LanguageData>

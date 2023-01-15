@@ -61,12 +61,13 @@
     <Compile Include="Abilities\CompProps\CompProperties_AbilityRaiseDead.cs" />
     <Compile Include="DebugTools\DebugToolsGhosts.cs" />
     <Compile Include="GameComps\GameComponent_StoreGhostPawns.cs" />
+    <Compile Include="Harmony\Pawn_DrawAt_Prefix.cs" />
     <Compile Include="HediffComps\CompProperties\HediffCompProperties_DisappearAfterTime.cs" />
     <Compile Include="HediffComps\HediffComp_DisappearAfterTime.cs" />
     <Compile Include="MapComps\MapComponent_StoreGhostPawns.cs" />
     <Compile Include="GhostsMain.cs" />
     <Compile Include="DefOfs\GhostsDefOf.cs" />
-    <Compile Include="Harmony\Pawn_Postfix.cs" />
+    <Compile Include="Harmony\Pawn_Kill_PostFix.cs" />
     <Compile Include="Stats\Workers\StatWorker_Clairvoyance.cs" />
     <Compile Include="ThingComps\CompProperties\CompProperties_PawnTextureGeneration.cs" />
     <Compile Include="ThingComps\Comp_PawnTextureGeneration.cs" />

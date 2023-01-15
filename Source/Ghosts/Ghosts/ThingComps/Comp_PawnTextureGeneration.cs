@@ -17,7 +17,6 @@ namespace Ghosts
         public CompProperties_PawnTextureGeneration Props => (CompProperties_PawnTextureGeneration)props;
 
         protected Material pawnMaterial;
-        protected Material[] pawnMaterialCopies = new Material[3];
         protected PawnTextureAtlasFrameSet frameSet;
 
         public Color debugColor1 = new Color(0.545f, 0.388f, 0.645f, 1f);
@@ -29,15 +28,27 @@ namespace Ghosts
         private void GetPawnMaterialAndMakeCopies()
         {
             Pawn parentPawn = parent as Pawn;
-            GlobalTextureAtlasManager.TryGetPawnFrameSet(parentPawn, out frameSet, out var _);
-            pawnMaterial = MaterialPool.MatFrom(new MaterialRequest(frameSet.atlas, ShaderDatabase.MoteGlowDistorted));
+            if (parentPawn != null)
+            {
+                GlobalTextureAtlasManager.TryGetPawnFrameSet(parentPawn, out frameSet, out var _);
+            }
         }
 
+        /// <summary>
+        /// Takes the Pawns' texture frame set and gets the pixels of the texture for the given frame in-game and makes them all white.
+        /// </summary>
         private void DrawPawnMaterial()
         {
             Pawn parentPawn = parent as Pawn;
-            if (parentPawn != null && parentPawn.Map != null && !parentPawn.Dead && !parentPawn.Downed)
+            if (parentPawn != null)
             {
+                if (pawnMaterial == null)
+                {
+                    Shader shader = ShaderDatabase.MoteGlow;
+                    Color color = new Color(51, 204, 255, 1f);
+                    pawnMaterial = MaterialPool.MatFrom(new MaterialRequest(frameSet.atlas, shader, color));
+                }
+
                 int index = frameSet.GetIndex(parentPawn.Rotation, PawnDrawMode.BodyAndHead);
                 if (frameSet.isDirty[index])
                 {
@@ -47,7 +58,16 @@ namespace Ghosts
                     frameSet.isDirty[index] = false;
                 }
 
-                pawnMaterial.color = Color.white;
+                /*
+                Texture2D pawnTexture = pawnMaterial.mainTexture as Texture2D;
+                Color[] pixels = pawnTexture.GetPixels();
+                for (int i = 0; i < pixels.Length; i++)
+                {
+                    pixels[i] = Color.white;
+                }
+                pawnTexture.SetPixels(pixels.Select(x => Color.white).ToArray());
+                pawnTexture.Apply();
+                */
 
                 GenDraw.DrawMeshNowOrLater(
                         frameSet.meshes[index],
@@ -67,7 +87,6 @@ namespace Ghosts
 
         public override void PostDraw()
         {
-            base.PostDraw();
             DrawPawnMaterial();
         }
     }

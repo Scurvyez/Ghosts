@@ -13,7 +13,6 @@ namespace Ghosts
     public class Comp_AbilityRaiseDead : CompAbilityEffect
     {
         public new CompProperties_AbilityRaiseDead Props => (CompProperties_AbilityRaiseDead)props;
-        public PawnDataDuplication PawnDataDuplication;
 
         public override void Apply(LocalTargetInfo target, LocalTargetInfo dest)
         {
@@ -45,9 +44,14 @@ namespace Ghosts
         public override bool GizmoDisabled(out string reason)
         {
             GameComponent_StoreGhostPawns gameComp = Current.Game.GetComponent<GameComponent_StoreGhostPawns>();
-            if (gameComp.HumanGhosts.NullOrEmpty() || gameComp.HumanGhosts.RandomElement().Spawned)
+            if (gameComp.HumanGhosts.NullOrEmpty() && gameComp.SpawnedHumanGhosts.NullOrEmpty())
             {
-                reason = "SZ_AbilityRaiseDead_EmptyGhostCache".Translate(parent.pawn);
+                reason = "SZ_AbilityRaiseDead_NoneDead".Translate(parent.pawn);
+                return true;
+            }
+            else if (gameComp.HumanGhosts.NullOrEmpty() && !gameComp.SpawnedHumanGhosts.NullOrEmpty())
+            {
+                reason = "SZ_AbilityRaiseDead_AllDeadSpawned".Translate(parent.pawn);
                 return true;
             }
             reason = null;

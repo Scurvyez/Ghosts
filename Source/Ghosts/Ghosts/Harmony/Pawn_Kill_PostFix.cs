@@ -12,7 +12,7 @@ using HarmonyLib;
 namespace Ghosts
 {
     [HarmonyPatch(typeof(Pawn), "Kill")]
-    public static class Kill_Patch
+    public static class Kill_PostFix
     {
         /// <summary>
         /// Checks whenever a pawn dies on the map and creates a new, placeholder "ghost" pawn.
@@ -23,8 +23,8 @@ namespace Ghosts
         [HarmonyPostfix]
         public static void GenerateGhostWhenPawnDies(Pawn __instance, DamageInfo? dinfo, Hediff exactCulprit = null)
         {
-            Color debugColor1 = new Color(0.545f, 0.388f, 0.645f, 1f);
-            Color debugColor2 = new Color(0.845f, 0.388f, 0.245f, 1f);
+            //Color debugColor1 = new Color(0.545f, 0.388f, 0.645f, 1f);
+            //Color debugColor2 = new Color(0.845f, 0.388f, 0.245f, 1f);
 
             // if the map exists then generate a placeholder pawn object, dupe the dead pawns data, transfer to the placeholder pawn, and save for later use
             if (__instance.IsColonist && __instance.MapHeld != null)
@@ -50,6 +50,7 @@ namespace Ghosts
                 }*/
 
                 Pawn ghost = PawnGenerator.GeneratePawn(request);
+
                 // this ensures the placeholder pawn doesn't spawn with apparel as it's not needed here
                 ghost.apparel?.DestroyAll();
 
