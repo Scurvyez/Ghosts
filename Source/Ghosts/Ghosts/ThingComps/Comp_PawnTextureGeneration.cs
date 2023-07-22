@@ -28,46 +28,40 @@ namespace Ghosts
         private void GetPawnMaterialAndMakeCopies()
         {
             Pawn parentPawn = parent as Pawn;
-            if (parentPawn != null)
+            if (parentPawn != null && !parentPawn.Downed && !parentPawn.Dead)
             {
                 GlobalTextureAtlasManager.TryGetPawnFrameSet(parentPawn, out frameSet, out var _);
             }
         }
 
         /// <summary>
-        /// Takes the Pawns' texture frame set and gets the pixels of the texture for the given frame in-game and makes them all white.
+        /// Takes the Pawns' texture frame set and gets the pixels of the texture for the given frame in-game.
+        /// WIP. Makes all the pixels white.
+        /// WIP. Blurs those pixels.
         /// </summary>
         private void DrawPawnMaterial()
         {
             Pawn parentPawn = parent as Pawn;
-            if (parentPawn != null)
+            if (parentPawn != null && !parentPawn.Downed && !parentPawn.Dead)
             {
                 if (pawnMaterial == null)
                 {
                     Shader shader = ShaderDatabase.MoteGlow;
-                    Color color = new Color(51, 204, 255, 1f);
-                    pawnMaterial = MaterialPool.MatFrom(new MaterialRequest(frameSet.atlas, shader, color));
+                    //Color color = new Color(0, 0, 255);
+                    pawnMaterial = MaterialPool.MatFrom(new MaterialRequest(frameSet.atlas, shader));
                 }
 
                 int index = frameSet.GetIndex(parentPawn.Rotation, PawnDrawMode.BodyAndHead);
                 if (frameSet.isDirty[index])
                 {
                     Find.PawnCacheCamera.rect = frameSet.uvRects[index];
-                    Find.PawnCacheRenderer.RenderPawn(parentPawn, frameSet.atlas, cameraOffset: Vector3.zero, cameraZoom: 1f, angle: 0f, parentPawn.Rotation, renderHead: true, renderBody: true, portrait: false);
+                    Find.PawnCacheRenderer.RenderPawn(parentPawn, frameSet.atlas, cameraOffset: Vector3.zero, cameraZoom: 1f, angle: 0f, parentPawn.Rotation, renderHead: true, renderBody: true, portrait: true);
                     Find.PawnCacheCamera.rect = new Rect(0f, 1f, 1f, 1f);
                     frameSet.isDirty[index] = false;
                 }
 
-                /*
-                Texture2D pawnTexture = pawnMaterial.mainTexture as Texture2D;
-                Color[] pixels = pawnTexture.GetPixels();
-                for (int i = 0; i < pixels.Length; i++)
-                {
-                    pixels[i] = Color.white;
-                }
-                pawnTexture.SetPixels(pixels.Select(x => Color.white).ToArray());
-                pawnTexture.Apply();
-                */
+                //pawnMaterial.color = new Color(pawnMaterial.color.r, pawnMaterial.color.g, pawnMaterial.color.b, 1f);
+                pawnMaterial.color = new Color(255, 255, 255, 1f);
 
                 GenDraw.DrawMeshNowOrLater(
                         frameSet.meshes[index],
