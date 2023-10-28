@@ -29,36 +29,16 @@ namespace Ghosts
                     canGeneratePawnRelations: false, allowFood: false, allowAddictions: false, fixedBiologicalAge: 0, fixedChronologicalAge: 0, fixedGender: __instance.gender, 
                     fixedIdeo: null, forceNoIdeo: true, forceBaselinerChance: 1f);
 
-                // set the ghost pawnKind to that of the matching dead pawns' bodyType
-                /*if (__instance.story.bodyType == BodyTypeDefOf.Female)
-                {
-                    request.KindDef = GhostsDefOf.SZ_GhostFemaleBody;
-                }
-                else if (__instance.story.bodyType == BodyTypeDefOf.Fat)
-                {
-                    request.KindDef = GhostsDefOf.SZ_GhostFatBody;
-                }
-                else
-                {
-                    request.KindDef = GhostsDefOf.SZ_GhostHulkBody;
-                }*/
-
+                // generate pawn and store in GameComp, ensure no apparel spawwns too
                 Pawn ghost = PawnGenerator.GeneratePawn(request);
-
-                // this ensures the placeholder pawn doesn't spawn with apparel as it's not needed here
                 ghost.apparel?.DestroyAll();
+                Current.Game.GetComponent<GameComponent_StoreGhostPawns>().HumanGhosts.Add(ghost);
 
-                // name of temp pawn before duping
-                Log.Message("Successful generation of: " + ghost.Name.ToString().Colorize(debugColor1) + " , as a placeholder pawn");
-
+                // duplicate all pertinent data
                 PawnDataDuplication.Duplicate(__instance, ghost);
 
                 // name of finalized pawn after duping for storage in MapComp
                 Log.Message("All pertinent data for " + ghost.Name.ToString().Colorize(debugColor2) + " duplicated successfully.");
-
-                // storage in MapComp
-                // DEPRECATED __instance.MapHeld.GetComponent<MapComponent_StoreGhostPawns>().HumanGhosts.Add(ghost);
-                Current.Game.GetComponent<GameComponent_StoreGhostPawns>().HumanGhosts.Add(ghost);
             }
         }
     }

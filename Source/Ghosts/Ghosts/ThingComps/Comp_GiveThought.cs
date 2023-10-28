@@ -57,6 +57,7 @@ namespace Ghosts
                             }
                         }
 
+                        /*
                         for (int i = 0; i < thisPawn.Map.GetComponent<MapComponent_StoreGhostPawns>().HumanGhosts.Count; i++)
                         {
                             if (relations.DirectRelationExists(PawnRelationDefOf.Lover, thisPawn.Map.GetComponent<MapComponent_StoreGhostPawns>().HumanGhosts[i]))
@@ -64,6 +65,7 @@ namespace Ghosts
                                 pawn.needs.mood.thoughts.memories.TryGainMemory(Props.loverThoughtDef);
                             }
                         }
+                        */
                     }
                 }
             }

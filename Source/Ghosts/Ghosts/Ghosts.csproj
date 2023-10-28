@@ -64,7 +64,6 @@
     <Compile Include="Harmony\Pawn_DrawAt_Prefix.cs" />
     <Compile Include="HediffComps\CompProperties\HediffCompProperties_DisappearAfterTime.cs" />
     <Compile Include="HediffComps\HediffComp_DisappearAfterTime.cs" />
-    <Compile Include="MapComps\MapComponent_StoreGhostPawns.cs" />
     <Compile Include="GhostsMain.cs" />
     <Compile Include="DefOfs\GhostsDefOf.cs" />
     <Compile Include="Harmony\Pawn_Kill_PostFix.cs" />
