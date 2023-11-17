@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using RimWorld;
-using Verse;
 using UnityEngine;
+using Verse;
 
 namespace Ghosts
 {
@@ -23,7 +20,6 @@ namespace Ghosts
                 {
                     DuplicatePawnIdeology(ref sourcePawn, ref destinationPawn);
                 }
-
                 DuplicatePawnRelations(ref sourcePawn, ref destinationPawn);
 
                 /*if (sourcePawn.Faction != destinationPawn.Faction)
@@ -35,11 +31,21 @@ namespace Ghosts
                 destinationPawn.Name = new NameTriple(sourcePawnName.First, sourcePawnName.Nick, sourcePawnName.Last);
 
                 // copy pawns' graphics
+                /*
                 destinationPawn.Drawer.renderer.graphics = new PawnGraphicSet(destinationPawn);
                 destinationPawn.Drawer.renderer.graphics.nakedGraphic = sourcePawn.Drawer.renderer.graphics.nakedGraphic;
                 destinationPawn.Drawer.renderer.graphics.headGraphic = sourcePawn.Drawer.renderer.graphics.headGraphic;
                 destinationPawn.Drawer.renderer.graphics.hairGraphic = null;
                 destinationPawn.Drawer.renderer.graphics.beardGraphic = null;
+                */
+
+                PawnTextureAtlasFrameSet pawnFrameSet;
+                Material pawnMaterial;
+
+                GlobalTextureAtlasManager.TryGetPawnFrameSet(sourcePawn, out pawnFrameSet, out var _);
+                pawnMaterial = MaterialPool.MatFrom(new MaterialRequest(pawnFrameSet.atlas, ShaderDatabase.Transparent));
+
+                destinationPawn.DefaultGraphic.MatSingle.CopyPropertiesFromMaterial(pawnMaterial);
                 sourcePawn.Drawer.renderer.graphics.ResolveAllGraphics();
             }
             catch (Exception exception)
@@ -119,10 +125,19 @@ namespace Ghosts
         public static Pawn SpawnCopy(Pawn pawn)
         {
             // Generate a new pawn.
-            PawnGenerationRequest request = new PawnGenerationRequest(pawn.kindDef, faction: null, context: PawnGenerationContext.NonPlayer, fixedBiologicalAge: pawn.ageTracker.AgeBiologicalYearsFloat, fixedChronologicalAge: pawn.ageTracker.AgeChronologicalYearsFloat, fixedGender: pawn.gender);
-            Pawn copy = PawnGenerator.GeneratePawn(request);
+            //PawnGenerationRequest request = new PawnGenerationRequest(pawn.kindDef, faction: null, context: PawnGenerationContext.NonPlayer, fixedBiologicalAge: pawn.ageTracker.AgeBiologicalYearsFloat, fixedChronologicalAge: pawn.ageTracker.AgeChronologicalYearsFloat, fixedGender: pawn.gender);
+            //Pawn copy = PawnGenerator.GeneratePawn(request);
+
+            // placeholder pawn object generation
+            PawnGenerationRequest request = new PawnGenerationRequest(
+                GhostsDefOf.SZ_GhostBaseKind, pawn.Faction, PawnGenerationContext.NonPlayer, forceGenerateNewPawn: true,
+                canGeneratePawnRelations: false, allowFood: false, allowAddictions: false, fixedBiologicalAge: 0, fixedChronologicalAge: 0, fixedGender: pawn.gender,
+                fixedIdeo: null, forceNoIdeo: true, forceBaselinerChance: 1f);
+
+            Pawn ghost = PawnGenerator.GeneratePawn(request);
 
             // Melanin is controlled via genes. If the pawn has one, use it. Otherwise just take whatever skinColorBase the pawn has.
+            /*
             if (copy.genes?.GetMelaninGene() != null)
             {
                 copy.genes.GetMelaninGene().skinColorBase = pawn.genes.GetMelaninGene().skinColorBase;
@@ -132,23 +147,24 @@ namespace Ghosts
                 copy.story.skinColorOverride = pawn.story?.skinColorOverride;
                 copy.story.SkinColorBase = pawn.story.SkinColorBase;
             }
+            */
 
             // Get rid of any items it may have spawned with.
-            copy?.equipment?.DestroyAllEquipment();
-            copy?.apparel?.DestroyAll();
-            copy?.inventory?.DestroyAll();
+            ghost?.equipment?.DestroyAllEquipment();
+            ghost?.apparel?.DestroyAll();
+            ghost?.inventory?.DestroyAll();
 
             // Copy the pawn's physical attributes.
-            copy.story.bodyType = pawn.story.bodyType;
+            ghost.story.bodyType = pawn.story.bodyType;
 
-            Duplicate(pawn, copy);
+            Duplicate(pawn, ghost);
 
             // Spawn the copy.
-            GenSpawn.Spawn(copy, pawn.Position, pawn.Map);
+            GenSpawn.Spawn(ghost, pawn.Position, pawn.Map);
 
             // Draw the copy.
-            copy.Drawer.renderer.graphics.ResolveAllGraphics();
-            return copy;
+            ghost.Drawer.renderer.graphics.ResolveAllGraphics();
+            return ghost;
         }
     }
 }

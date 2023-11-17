@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using RimWorld;
-using Verse;
+﻿using RimWorld;
 
 namespace Ghosts
 {
     public class CompProperties_AbilityRaiseDead : CompProperties_AbilityEffect
     {
-        public string successMessage;
+        public string successMessage; // turn this into a keyed value and just use .Translate()
 
         public CompProperties_AbilityRaiseDead() => compClass = typeof(Comp_AbilityRaiseDead);
     }
