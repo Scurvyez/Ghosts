@@ -8,7 +8,7 @@
         <defName>SZ_GhostBaseThing</defName>
         <label>ghost</label>
         <description>PLACEHOLDER</description>
-        <selectable>false</selectable>
+        <selectable>true</selectable> <!-- set to false when all done -->
         <tickerType>Normal</tickerType>
         <altitudeLayer>Pawn</altitudeLayer>
         <useHitPoints>false</useHitPoints>
@@ -26,14 +26,14 @@
             <intelligence>Humanlike</intelligence>
             <nameCategory>HumanStandard</nameCategory>
             <body>Human</body> <!-- PLACEHOLDER -->
-            <hasGenders>false</hasGenders>
+            <hasGenders>true</hasGenders>
             <baseBodySize>1.0</baseBodySize>
             <baseHealthScale>1.0</baseHealthScale>
             <needsRest>false</needsRest>
 			<foodType>None</foodType>
             <canBePredatorPrey>false</canBePredatorPrey>
             <canReleaseToWild>false</canReleaseToWild>
-            <hideTrainingTab>true</hideTrainingTab>
+            <hideTrainingTab>false</hideTrainingTab>
             <trainability>None</trainability>
             <nameOnTameChance>0</nameOnTameChance>
             <lifeExpectancy>500</lifeExpectancy>
@@ -47,9 +47,9 @@
             <soundMeleeHitBuilding>Pawn_Melee_SmallScratch_HitBuilding</soundMeleeHitBuilding>
             <soundMeleeMiss>Pawn_Melee_SmallScratch_Miss</soundMeleeMiss>
         </race>
-        <comps>
+        <!-- <comps>
             <li Class="Ghosts.CompProperties_PawnTextureGeneration" />
-        </comps>
+        </comps> -->
     </ThingDef>
 
     <!--==================== Ghost PawnKindDef Base ====================-->
@@ -65,14 +65,14 @@
             <li>
                 <bodyGraphicData>
                     <texPath>Things/Pawn/Blank</texPath>
-                    <drawSize>4.0</drawSize>
+                    <drawSize>1.0</drawSize>
                     <shaderType>
                         <li>Transparent</li>
                     </shaderType>
                 </bodyGraphicData>
                 <dessicatedBodyGraphicData>
                     <texPath>Things/Pawn/Blank</texPath>
-                    <drawSize>4.0</drawSize>
+                    <drawSize>1.0</drawSize>
                 </dessicatedBodyGraphicData>
             </li>
         </lifeStages>

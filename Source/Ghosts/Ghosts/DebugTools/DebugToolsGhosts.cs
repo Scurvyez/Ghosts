@@ -7,34 +7,30 @@ namespace Ghosts
 {
     public static class DebugToolsGhosts
     {
-		[DebugAction("Ghost Utils", null, false, false, false, 0, false, actionType = DebugActionType.ToolMap, allowedGameStates = AllowedGameStates.PlayingOnMap, displayPriority = 1000)]
+		[DebugAction("Ghost Utils", null, false, false, false, 0, false, actionType = DebugActionType.ToolMap, allowedGameStates = AllowedGameStates.IsCurrentlyOnMap, displayPriority = 1000)]
 		private static List<DebugActionNode> SpawnGhost()
 		{
-            Color debugColor1 = new Color(0.145f, 0.588f, 0.745f, 1f);
+            //Color debugColor1 = new Color(0.145f, 0.588f, 0.745f, 1f);
             List<DebugActionNode> list = new List<DebugActionNode>();
 			GameComponent_StoreGhostPawns gameComp = Current.Game.GetComponent<GameComponent_StoreGhostPawns>();
 
-            if (gameComp != null)
+            if (gameComp != null && !gameComp.HumanGhosts.NullOrEmpty())
 			{
-                List<Pawn> savedGhosts = gameComp.HumanGhosts;
-                if (!savedGhosts.NullOrEmpty())
+                //Log.Message("Cached Ghosts: " + gameComp.HumanGhosts.Count().ToString().Colorize(debugColor1));
+                foreach (Pawn pawn in gameComp.HumanGhosts)
                 {
-                    Log.Message("Cached Ghosts: " + savedGhosts.Count().ToString().Colorize(debugColor1));
-                    foreach (Pawn pawn in savedGhosts)
+                    if (pawn != null && pawn.kindDef != null && pawn.Faction != null)
                     {
-                        if (pawn != null && pawn.kindDef != null && pawn.Faction != null)
+                        Pawn ghost = pawn;
+                        list.Add(new DebugActionNode(ghost.Name.ToString(), DebugActionType.ToolMap)
                         {
-                            Pawn ghosty = pawn;
-                            list.Add(new DebugActionNode(ghosty.Name.ToString(), DebugActionType.ToolMap)
+                            action = delegate
                             {
-                                action = delegate
-                                {
-                                    Pawn ghostToSpawn = PawnGenerator.GeneratePawn(ghosty.kindDef, ghosty.Faction);
-                                    GenSpawn.Spawn(ghostToSpawn, UI.MouseCell(), Find.CurrentMap);
-                                    //PawnDataDuplication.SpawnCopy(ghostToSpawn);
-                                }
-                            });
-                        }
+                                //Pawn ghostToSpawn = PawnGenerator.GeneratePawn(ghost.kindDef, ghost.Faction);
+                                //PawnDataDuplication.SpawnCopy(ghostToSpawn, UI.MouseCell(), Find.CurrentMap);
+                                GenSpawn.Spawn(ghost, UI.MouseCell(), Find.CurrentMap);
+                            }
+                        });
                     }
                 }
             }

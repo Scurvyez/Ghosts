@@ -12,9 +12,9 @@ namespace Ghosts
 
         // PawnKindDefs
         public static PawnKindDef SZ_GhostBaseKind;
-        public static PawnKindDef SZ_GhostFemaleBody;
-        public static PawnKindDef SZ_GhostFatBody;
-        public static PawnKindDef SZ_GhostHulkBody;
+        //public static PawnKindDef SZ_GhostFemaleBody;
+        //public static PawnKindDef SZ_GhostFatBody;
+        //public static PawnKindDef SZ_GhostHulkBody;
         //public static PawnKindDef SZ_GhostThinBody;
         //public static PawnKindDef SZ_GhostBabyBody;
         //public static PawnKindDef SZ_GhostChildBody;

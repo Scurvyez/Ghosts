@@ -22,7 +22,8 @@ namespace Ghosts
                 {
                     if (tile.IsValid && !ghost.Spawned && parent.pawn.Map != null)
                     {
-                        GenSpawn.Spawn(ghost, target.Cell.RandomAdjacentCell8Way(), parent.pawn.Map);
+                        PawnDataDuplication.SpawnCopy(ghost, target.Cell.RandomAdjacentCell8Way(), parent.pawn.Map);
+
                         gameComp.HumanGhosts.Remove(ghost);
                         gameComp.SpawnedHumanGhosts.Add(ghost);
                         ghost.health.RemoveAllHediffs();
