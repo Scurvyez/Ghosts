@@ -104,6 +104,15 @@ namespace Ghosts
         {
             try
             {
+                PawnTextureAtlasFrameSet frameSet;
+                Material pawnMaterial;
+                
+                var sourcePawnTexture = GlobalTextureAtlasManager.TryGetPawnFrameSet(sourcePawn, out frameSet, out var _);
+                pawnMaterial = MaterialPool.MatFrom(new MaterialRequest(frameSet.atlas, ShaderDatabase.Transparent));
+
+                
+
+                /*
                 if (sourcePawn.story != null)
                 {
                     destinationPawn.story.bodyType = sourcePawn.story.bodyType;
@@ -121,6 +130,7 @@ namespace Ghosts
                         destinationPawn.apparel.WornApparel.Add(apparel);
                     }
                 }
+                */
             }
             catch (Exception exception)
             {
