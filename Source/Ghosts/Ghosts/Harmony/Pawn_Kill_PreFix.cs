@@ -1,10 +1,6 @@
 ﻿using Verse;
 using HarmonyLib;
 using UnityEngine;
-using System.IO;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Ghosts
 {
@@ -35,7 +31,7 @@ namespace Ghosts
                         RenderTexture pawnTextureAtlas = frameSet.atlas;
                         Texture2D finalPawnTexture = ToTexture2D(pawnTextureAtlas, frameSet.uvRects[i]);
 
-                        //SaveCachedTextureToFile(finalPawnTexture, pawn, i);
+                        SendTexturesToComp(pawn, new Texture2D[] { finalPawnTexture });
                     }
                 }
             }
@@ -51,25 +47,21 @@ namespace Ghosts
             return pawnTexture;
         }
 
-        /*
-        public static void SaveCachedTextureToFile(Texture2D texture, Pawn pawn, int frameIndex)
+        public static void SendTexturesToComp(Pawn pawn, Texture2D[] textures)
         {
-            if (texture != null)
+            GameComponent_StoreGhostPawns gameComp = Current.Game.GetComponent<GameComponent_StoreGhostPawns>();
+
+            if (gameComp != null)
             {
-                string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-                string folderPath = Path.Combine(desktopPath, "GhostTextures");
-                string fileName = $"{pawn.Name.ToStringShort}_GhostTexture_{frameIndex}.png"; // change to a unique ID instead of Name
-                string filePath = Path.Combine(folderPath, fileName);
-
-                if (!Directory.Exists(folderPath))
+                if (!gameComp.GhostTextures.ContainsKey(pawn.Name.ToString()))
                 {
-                    Directory.CreateDirectory(folderPath);
+                    gameComp.GhostTextures.Add(pawn.Name.ToString(), textures);
                 }
-
-                byte[] bytes = ImageConversion.EncodeToPNG(texture);
-                File.WriteAllBytes(filePath, bytes);
+                else
+                {
+                    gameComp.GhostTextures[pawn.Name.ToString()] = textures;
+                }
             }
         }
-        */
     }
 }

@@ -16,11 +16,25 @@ namespace Ghosts
             List<DebugActionNode> list = new List<DebugActionNode>();
 			GameComponent_StoreGhostPawns gameComp = Current.Game.GetComponent<GameComponent_StoreGhostPawns>();
 
-            if (gameComp != null && !gameComp.HumanGhosts.NullOrEmpty())
+            if (gameComp != null && gameComp.ColonistGhosts > 0)
 			{
                 //Log.Message("Cached Ghosts: " + gameComp.HumanGhosts.Count().ToString().Colorize(debugColor1));
-                foreach (Pawn pawn in gameComp.HumanGhosts)
+                foreach (var kvp in gameComp.GhostTextures)
                 {
+                    string pawnName = kvp.Key;
+                    Texture2D[] textures = kvp.Value;
+
+                    list.Add(new DebugActionNode(pawnName, DebugActionType.ToolMap)
+                    {
+                        action = delegate
+                        {
+                            // You might want to use the textures in some way when spawning the ghost
+                            // For now, just print a log message
+                            Log.Message($"Spawned ghost for {pawnName} at {UI.MouseCell()}");
+                        }
+                    });
+
+                    /*
                     if (pawn != null && pawn.kindDef != null && pawn.Faction != null)
                     {
                         Pawn ghost = pawn;
@@ -34,6 +48,7 @@ namespace Ghosts
                             }
                         });
                     }
+                    */
                 }
             }
             return list;

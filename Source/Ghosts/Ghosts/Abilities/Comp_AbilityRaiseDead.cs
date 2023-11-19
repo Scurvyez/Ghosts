@@ -15,22 +15,23 @@ namespace Ghosts
             Color debugColor1 = new Color(0.545f, 0.388f, 0.645f, 1f);
             GameComponent_StoreGhostPawns gameComp = Current.Game.GetComponent<GameComponent_StoreGhostPawns>();
 
-            if (!gameComp.HumanGhosts.NullOrEmpty())
+            if (gameComp.ColonistGhosts > 0)
             {
-                Pawn ghost = gameComp.HumanGhosts.RandomElement();
+                //Pawn ghost = gameComp.ColonistGhosts.RandomElement();
+                Pawn ghostToSpawn = new Pawn();
                 foreach (IntVec3 tile in GenRadial.RadialCellsAround(parent.pawn.Position, 2f, useCenter: true))
                 {
-                    if (tile.IsValid && !ghost.Spawned && parent.pawn.Map != null)
+                    if (tile.IsValid && !ghostToSpawn.Spawned && parent.pawn.Map != null)
                     {
-                        PawnDataDuplication.SpawnCopy(ghost, target.Cell.RandomAdjacentCell8Way(), parent.pawn.Map);
+                        //PawnDataDuplication.SpawnCopy(ghost, target.Cell.RandomAdjacentCell8Way(), parent.pawn.Map);
 
-                        gameComp.HumanGhosts.Remove(ghost);
-                        gameComp.SpawnedHumanGhosts.Add(ghost);
-                        ghost.health.RemoveAllHediffs();
-                        ghost.health.AddHediff(GhostsDefOf.SZ_GhostsDisappearing);
+                        //gameComp.ColonistGhosts.Remove(ghostToSpawn);
+                        //gameComp.SpawnedColonistGhosts.Add(ghostToSpawn);
+                        ghostToSpawn.health.RemoveAllHediffs();
+                        ghostToSpawn.health.AddHediff(GhostsDefOf.SZ_GhostsDisappearing);
 
-                        Log.Message("HumanGhosts: " + gameComp.HumanGhosts.Count().ToString().Colorize(debugColor1));
-                        Log.Message("SpawnedHumanGhosts: " + gameComp.SpawnedHumanGhosts.Count().ToString().Colorize(debugColor1));
+                        Log.Message("ColonistGhosts: " + gameComp.ColonistGhosts.ToString().Colorize(debugColor1));
+                        Log.Message("SpawnedColonistGhosts: " + gameComp.SpawnedColonistGhosts.ToString().Colorize(debugColor1));
                     }
                 }
             }
@@ -40,12 +41,12 @@ namespace Ghosts
         public override bool GizmoDisabled(out string reason)
         {
             GameComponent_StoreGhostPawns gameComp = Current.Game.GetComponent<GameComponent_StoreGhostPawns>();
-            if (gameComp.HumanGhosts.NullOrEmpty() && gameComp.SpawnedHumanGhosts.NullOrEmpty())
+            if (gameComp.ColonistGhosts < 0 && gameComp.SpawnedColonistGhosts < 0)
             {
                 reason = "SZ_AbilityRaiseDead_NoneDead".Translate(parent.pawn);
                 return true;
             }
-            else if (gameComp.HumanGhosts.NullOrEmpty() && !gameComp.SpawnedHumanGhosts.NullOrEmpty())
+            else if (gameComp.ColonistGhosts < 0 && gameComp.SpawnedColonistGhosts > 0)
             {
                 reason = "SZ_AbilityRaiseDead_AllDeadSpawned".Translate(parent.pawn);
                 return true;

@@ -40,6 +40,9 @@
             <soundMeleeHitBuilding>Pawn_Melee_SmallScratch_HitBuilding</soundMeleeHitBuilding>
             <soundMeleeMiss>Pawn_Melee_SmallScratch_Miss</soundMeleeMiss>
         </race>
+        <comps>
+            <li Class="Ghosts.CompProperties_GhostGraphics" />
+        </comps>
     </ThingDef>
 
     <!--==================== Animal Ghost PawnKindDef Base ====================-->

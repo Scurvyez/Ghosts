@@ -24,14 +24,14 @@ namespace Ghosts
             if (ticksRemaining <= 0)
             {
                 Pawn.DeSpawn(DestroyMode.Vanish);
-                gameComp.HumanGhosts.Add(Pawn);
+                gameComp.ColonistGhosts += 1;
                 Pawn.health.RemoveAllHediffs();
-                gameComp.SpawnedHumanGhosts.Remove(Pawn);
+                gameComp.SpawnedColonistGhosts =+ 1;
 
                 if (ticksRemaining == 0)
                 {
-                    Log.Message("HumanGhosts: " + gameComp.HumanGhosts.Count().ToString().Colorize(debugColor1));
-                    Log.Message("SpawnedHumanGhosts: " + gameComp.SpawnedHumanGhosts.Count().ToString().Colorize(debugColor1));
+                    Log.Message("ColonistGhosts: " + gameComp.ColonistGhosts.ToString().Colorize(debugColor1));
+                    Log.Message("SpawnedColonistGhosts: " + gameComp.SpawnedColonistGhosts.ToString().Colorize(debugColor1));
                 }
             }
         }
