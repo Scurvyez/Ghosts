@@ -4,7 +4,7 @@
 
     <!--==================== Ghost Chicken ThingDef ====================-->
 
-    <ThingDef ParentName="SZ_AnimalGhostBaseThing">
+    <!-- <ThingDef ParentName="SZ_AnimalGhostBaseThing">
         <defName>SZ_GhostChicken</defName>
         <comps>
             <li Class="Ghosts.CompProperties_GiveThought">
@@ -72,14 +72,14 @@
                 </graphicsExtra>
             </li>
         </comps>
-    </ThingDef>
+    </ThingDef> -->
 
     <!--==================== Ghost Chicken PawnKindDef ====================-->
 
-    <PawnKindDef ParentName="SZ_AnimalGhostBaseKind">
+    <!-- <PawnKindDef ParentName="SZ_AnimalGhostBaseKind">
         <defName>SZ_GhostChicken</defName>
         <label>chicken ghost</label>
         <race>SZ_GhostChicken</race>
-    </PawnKindDef>
+    </PawnKindDef> -->
 
 </Defs>

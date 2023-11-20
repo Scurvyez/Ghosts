@@ -4,7 +4,7 @@
 
     <!--==================== Ghost ThingDef Female Body ====================-->
 
-    <ThingDef ParentName="SZ_GhostBaseThing">
+    <!-- <ThingDef ParentName="SZ_GhostBaseThing">
         <defName>SZ_GhostFemaleBody</defName>
         <comps>
             <li Class="Ghosts.CompProperties_GiveThought">
@@ -73,14 +73,14 @@
                 </graphicsExtra>
             </li>
         </comps>
-    </ThingDef>
+    </ThingDef> -->
 
     <!--==================== Ghost PawnKindDef Female ====================-->
 
-    <PawnKindDef ParentName="SZ_GhostBaseKind">
+    <!-- <PawnKindDef ParentName="SZ_GhostBaseKind">
         <defName>SZ_GhostFemaleBody</defName>
         <label>ghost</label>
         <race>SZ_GhostFemaleBody</race>
-    </PawnKindDef>
+    </PawnKindDef> -->
 
 </Defs>

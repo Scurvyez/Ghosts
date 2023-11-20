@@ -4,7 +4,7 @@
 
     <!--==================== Ghost ThingDef Fat Body ====================-->
 
-    <ThingDef ParentName="SZ_GhostBaseThing">
+    <!-- <ThingDef ParentName="SZ_GhostBaseThing">
         <defName>SZ_GhostFatBody</defName>
         <comps>
             <li Class="Ghosts.CompProperties_GiveThought">
@@ -72,14 +72,14 @@
                 </graphicsExtra>
             </li>
         </comps>
-    </ThingDef>
+    </ThingDef> -->
 
     <!--==================== Ghost PawnKindDef Fat ====================-->
 
-    <PawnKindDef ParentName="SZ_GhostBaseKind">
+    <!-- <PawnKindDef ParentName="SZ_GhostBaseKind">
         <defName>SZ_GhostFatBody</defName>
         <label>ghost</label>
         <race>SZ_GhostFatBody</race>
-    </PawnKindDef>
+    </PawnKindDef> -->
 
 </Defs>

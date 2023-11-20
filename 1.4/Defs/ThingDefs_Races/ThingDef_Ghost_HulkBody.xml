@@ -4,7 +4,7 @@
 
     <!--==================== Ghost ThingDef Hulk Body ====================-->
 
-    <ThingDef ParentName="SZ_GhostBaseThing">
+    <!-- <ThingDef ParentName="SZ_GhostBaseThing">
         <defName>SZ_GhostHulkBody</defName>
         <comps>
             <li Class="Ghosts.CompProperties_GiveThought">
@@ -72,14 +72,14 @@
                 </graphicsExtra>
             </li>
         </comps>
-    </ThingDef>
+    </ThingDef> -->
 
     <!--==================== Ghost PawnKindDef Hulk ====================-->
 
-    <PawnKindDef ParentName="SZ_GhostBaseKind">
+    <!-- <PawnKindDef ParentName="SZ_GhostBaseKind">
         <defName>SZ_GhostHulkBody</defName>
         <label>ghost</label>
         <race>SZ_GhostHulkBody</race>
-    </PawnKindDef>
+    </PawnKindDef> -->
 
 </Defs>

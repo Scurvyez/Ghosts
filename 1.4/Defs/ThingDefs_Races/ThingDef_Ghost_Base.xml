@@ -2,10 +2,10 @@
 
 <Defs>
 
-    <!--==================== Animal Ghost ThingDef Base ====================-->
+    <!--==================== Ghost ThingDef Base ====================-->
 
-    <ThingDef ParentName="AnimalThingBase" Name="SZ_AnimalGhostBaseThing">
-        <defName>SZ_AnimalGhostBaseThing</defName>
+    <ThingDef ParentName="AnimalThingBase" Name="SZ_GhostBaseThing">
+        <defName>SZ_GhostBaseThing</defName>
         <label>ghost</label>
         <thingClass>Ghosts.Ghost</thingClass>
         <selectable>true</selectable>
@@ -44,15 +44,19 @@
         </race>
         <comps>
             <li Class="Ghosts.CompProperties_ExtraPawnGraphics" />
+            <li Class="Ghosts.CompProperties_GiveThought">
+                <badThoughtDef>SZ_SawGhost_Scared</badThoughtDef>
+                <radius>6</radius>
+            </li>
         </comps>
     </ThingDef>
 
-    <!--==================== Animal Ghost PawnKindDef Base ====================-->
+    <!--==================== Ghost PawnKindDef Base ====================-->
 
-    <PawnKindDef ParentName="AnimalKindBase" Name="SZ_AnimalGhostBaseKind">
-        <defName>SZ_AnimalGhostBaseKind</defName>
+    <PawnKindDef ParentName="AnimalKindBase" Name="SZ_GhostBaseKind">
+        <defName>SZ_GhostBaseKind</defName>
         <label>ghost</label>
-        <race>SZ_AnimalGhostBaseThing</race>
+        <race>SZ_GhostBaseThing</race>
         <combatPower>0</combatPower> <!-- change maybe? -->
         <canArriveManhunter>true</canArriveManhunter>
         <ecoSystemWeight>0.0001</ecoSystemWeight>

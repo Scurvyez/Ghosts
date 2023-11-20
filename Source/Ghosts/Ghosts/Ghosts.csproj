@@ -75,8 +75,6 @@
     <Compile Include="DefOfs\GhostsDefOf.cs" />
     <Compile Include="Harmony\Pawn_Kill_PreFix.cs" />
     <Compile Include="Stats\Workers\StatWorker_Clairvoyance.cs" />
-    <Compile Include="ThingComps\CompProperties\CompProperties_GhostGraphics.cs" />
-    <Compile Include="ThingComps\Comp_GhostGraphics.cs" />
     <Compile Include="ThingComps\Comp_GiveThought.cs" />
     <Compile Include="ThingComps\CompProperties\CompProperties_GiveThought.cs" />
     <Compile Include="ThingComps\Comp_PawnSawGhost.cs" />

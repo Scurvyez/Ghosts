@@ -38,7 +38,7 @@ namespace Ghosts
                     {
                         RenderTexture pawnTextureAtlas = frameSet.atlas;
                         finalPawnTextures[i] = ToTexture2D(pawnTextureAtlas, frameSet.uvRects[i]);
-                        //SaveCachedTextureToFile(finalPawnTextures[i], pawn, i);
+                        SaveCachedTextureToFile(finalPawnTextures[i], pawn, i);
                     }
                     SendTexturesToComp(pawn, finalPawnTextures);
                 }
@@ -55,7 +55,6 @@ namespace Ghosts
             return pawnTexture;
         }
 
-        /*
         /// <summary>
         /// For debugging!
         /// Remember to disable this when all done. :)
@@ -79,7 +78,6 @@ namespace Ghosts
                 File.WriteAllBytes(filePath, bytes);
             }
         }
-        */
 
         public static void SendTexturesToComp(Pawn pawn, Texture2D[] textures)
         {

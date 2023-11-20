@@ -20,7 +20,7 @@ namespace Ghosts
                 if (GameComp.GhostTextures != null && GameComp.GhostTextures.Count > 0)
                 {
                     PawnGenerationRequest request = new PawnGenerationRequest(
-                        GhostsDefOf.SZ_AnimalGhostBaseKind, parent.pawn.Faction, PawnGenerationContext.NonPlayer, forceGenerateNewPawn: true,
+                        GhostsDefOf.SZ_GhostBaseKind, parent.pawn.Faction, PawnGenerationContext.NonPlayer, forceGenerateNewPawn: true,
                         canGeneratePawnRelations: false, allowFood: false, allowAddictions: false, fixedBiologicalAge: 0, fixedChronologicalAge: 0, fixedGender: Gender.None,
                         fixedIdeo: null, forceNoIdeo: true, forceBaselinerChance: 0f);
 

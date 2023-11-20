@@ -12,7 +12,6 @@ namespace Ghosts
 
         // PawnKindDefs
         public static PawnKindDef SZ_GhostBaseKind;
-        public static PawnKindDef SZ_AnimalGhostBaseKind;
 
         // PreceptDefs
         public static PreceptDef SZ_RoleMedium;

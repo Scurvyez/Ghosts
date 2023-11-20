@@ -4,11 +4,11 @@
 
     <!--==================== Ghost ThingDef Base ====================-->
 
-    <ThingDef ParentName="BasePawn" Name="SZ_GhostBaseThing">
+    <!-- <ThingDef ParentName="BasePawn" Name="SZ_GhostBaseThing">
         <defName>SZ_GhostBaseThing</defName>
         <label>ghost</label>
         <description>PLACEHOLDER</description>
-        <selectable>true</selectable> <!-- set to false when all done -->
+        <selectable>true</selectable>
         <tickerType>Normal</tickerType>
         <altitudeLayer>Pawn</altitudeLayer>
         <useHitPoints>false</useHitPoints>
@@ -25,7 +25,7 @@
             <thinkTreeConstant>HumanlikeConstant</thinkTreeConstant>
             <intelligence>Humanlike</intelligence>
             <nameCategory>HumanStandard</nameCategory>
-            <body>Human</body> <!-- PLACEHOLDER -->
+            <body>Human</body>
             <hasGenders>true</hasGenders>
             <baseBodySize>1.0</baseBodySize>
             <baseHealthScale>1.0</baseHealthScale>
@@ -47,18 +47,15 @@
             <soundMeleeHitBuilding>Pawn_Melee_SmallScratch_HitBuilding</soundMeleeHitBuilding>
             <soundMeleeMiss>Pawn_Melee_SmallScratch_Miss</soundMeleeMiss>
         </race>
-        <!-- <comps>
-            <li Class="Ghosts.CompProperties_PawnTextureGeneration" />
-        </comps> -->
-    </ThingDef>
+    </ThingDef> -->
 
     <!--==================== Ghost PawnKindDef Base ====================-->
 
-    <PawnKindDef Name="SZ_GhostBaseKind">
+    <!-- <PawnKindDef Name="SZ_GhostBaseKind">
         <defName>SZ_GhostBaseKind</defName>
         <label>ghost</label>
         <race>SZ_GhostBaseThing</race>
-        <combatPower>1</combatPower> <!-- change maybe? -->
+        <combatPower>1</combatPower>
         <initialWillRange>0</initialWillRange>
         <initialResistanceRange>0~2</initialResistanceRange>
         <lifeStages>
@@ -76,6 +73,6 @@
                 </dessicatedBodyGraphicData>
             </li>
         </lifeStages>
-    </PawnKindDef>
+    </PawnKindDef> -->
 
 </Defs>
