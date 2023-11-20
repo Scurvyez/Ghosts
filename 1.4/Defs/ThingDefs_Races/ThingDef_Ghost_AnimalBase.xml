@@ -7,6 +7,8 @@
     <ThingDef ParentName="AnimalThingBase" Name="SZ_AnimalGhostBaseThing">
         <defName>SZ_AnimalGhostBaseThing</defName>
         <label>ghost</label>
+        <thingClass>Ghosts.Ghost</thingClass>
+        <selectable>true</selectable>
         <description>PLACEHOLDER</description>
         <statBases>
             <MoveSpeed>0.6</MoveSpeed>
@@ -41,7 +43,7 @@
             <soundMeleeMiss>Pawn_Melee_SmallScratch_Miss</soundMeleeMiss>
         </race>
         <comps>
-            <li Class="Ghosts.CompProperties_GhostGraphics" />
+            <li Class="Ghosts.CompProperties_ExtraPawnGraphics" />
         </comps>
     </ThingDef>
 
@@ -58,14 +60,14 @@
             <li>
                 <bodyGraphicData>
                     <texPath>Things/Pawn/Blank</texPath>
-                    <drawSize>4.0</drawSize>
+                    <drawSize>2.0</drawSize>
                     <shaderType>
                         <li>Transparent</li>
                     </shaderType>
                 </bodyGraphicData>
                 <dessicatedBodyGraphicData>
                     <texPath>Things/Pawn/Blank</texPath>
-                    <drawSize>4.0</drawSize>
+                    <drawSize>2.0</drawSize>
                 </dessicatedBodyGraphicData>
             </li>
         </lifeStages>

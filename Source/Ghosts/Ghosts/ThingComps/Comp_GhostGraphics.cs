@@ -29,7 +29,7 @@ namespace Ghosts
             {
                 if (GameComp != null)
                 {
-                    Texture2D[] ghostTextures = GameComp.GhostTextures[parentPawn.Name.ToString()];
+                    Texture2D[] ghostTextures = GameComp.GhostTextures[parentPawn.Name];
 
                     if (ghostTextures.Length > 0)
                     {

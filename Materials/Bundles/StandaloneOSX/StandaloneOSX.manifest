@@ -1,0 +1,7 @@
+ManifestFileVersion: 0
+CRC: 940760090
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: ghostsbundle
+      Dependencies: {}

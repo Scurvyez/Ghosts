@@ -1,56 +1,83 @@
-﻿using System.Linq;
-using RimWorld;
+﻿using RimWorld;
 using Verse;
-using UnityEngine;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Ghosts
 {
     public class Comp_AbilityRaiseDead : CompAbilityEffect
     {
         public new CompProperties_AbilityRaiseDead Props => (CompProperties_AbilityRaiseDead)props;
-
+        GameComponent_StoreGhostPawns GameComp = Current.Game.GetComponent<GameComponent_StoreGhostPawns>();
+        
         public override void Apply(LocalTargetInfo target, LocalTargetInfo dest)
         {
             base.Apply(target, dest);
-            Color debugColor1 = new Color(0.545f, 0.388f, 0.645f, 1f);
-            GameComponent_StoreGhostPawns gameComp = Current.Game.GetComponent<GameComponent_StoreGhostPawns>();
 
-            if (gameComp.ColonistGhosts > 0)
+            IEnumerable<Name> spawnedPawnNames = parent.pawn.Map.mapPawns.AllPawnsSpawned.Select(pawn => pawn.Name);
+            if (GameComp != null && GameComp.AvailableColonistGhosts.Count > 0)
             {
-                //Pawn ghost = gameComp.ColonistGhosts.RandomElement();
-                Pawn ghostToSpawn = new Pawn();
-                foreach (IntVec3 tile in GenRadial.RadialCellsAround(parent.pawn.Position, 2f, useCenter: true))
+                if (GameComp.GhostTextures != null && GameComp.GhostTextures.Count > 0)
                 {
-                    if (tile.IsValid && !ghostToSpawn.Spawned && parent.pawn.Map != null)
+                    PawnGenerationRequest request = new PawnGenerationRequest(
+                        GhostsDefOf.SZ_AnimalGhostBaseKind, parent.pawn.Faction, PawnGenerationContext.NonPlayer, forceGenerateNewPawn: true,
+                        canGeneratePawnRelations: false, allowFood: false, allowAddictions: false, fixedBiologicalAge: 0, fixedChronologicalAge: 0, fixedGender: Gender.None,
+                        fixedIdeo: null, forceNoIdeo: true, forceBaselinerChance: 0f);
+
+                    Ghost ghostToSpawn = PawnGenerator.GeneratePawn(request) as Ghost;
+                    var selectedGhost = GameComp.GhostTextures.RandomElement();
+                    ghostToSpawn.Name = selectedGhost.Key;
+                    ghostToSpawn.kindDef.label = selectedGhost.Key.ToString();
+                    ghostToSpawn.GhostKeyValuePair = selectedGhost;
+
+                    foreach (IntVec3 tile in GenRadial.RadialCellsAround(parent.pawn.Position, 2f, useCenter: true))
                     {
-                        //PawnDataDuplication.SpawnCopy(ghost, target.Cell.RandomAdjacentCell8Way(), parent.pawn.Map);
+                        if (tile.IsValid && !ghostToSpawn.Spawned && parent.pawn.Map != null)
+                        {
+                            // Check if a ghost with the selected name is already spawned
+                            if (!spawnedPawnNames.Contains(ghostToSpawn.Name))
+                            {
+                                // Add the ghost to the spawned and remove it from the available list
+                                GameComp.SpawnedColonistGhosts.Add(ghostToSpawn.Name);
+                                GameComp.AvailableColonistGhosts.Remove(ghostToSpawn.Name);
 
-                        //gameComp.ColonistGhosts.Remove(ghostToSpawn);
-                        //gameComp.SpawnedColonistGhosts.Add(ghostToSpawn);
-                        ghostToSpawn.health.RemoveAllHediffs();
-                        ghostToSpawn.health.AddHediff(GhostsDefOf.SZ_GhostsDisappearing);
+                                // Spawn the ghost
+                                GenSpawn.Spawn(ghostToSpawn, tile.RandomAdjacentCell8Way(), parent.pawn.Map);
 
-                        Log.Message("ColonistGhosts: " + gameComp.ColonistGhosts.ToString().Colorize(debugColor1));
-                        Log.Message("SpawnedColonistGhosts: " + gameComp.SpawnedColonistGhosts.ToString().Colorize(debugColor1));
+                                ghostToSpawn.health.RemoveAllHediffs();
+                                ghostToSpawn.health.AddHediff(GhostsDefOf.SZ_GhostsDisappearing);
+                            }
+                        }
                     }
                 }
+                else
+                {
+                    // Handle the case when GhostTextures is null or empty
+                    Log.Warning("GhostTextures is null or empty.");
+                }
             }
-            return;
         }
 
         public override bool GizmoDisabled(out string reason)
         {
-            GameComponent_StoreGhostPawns gameComp = Current.Game.GetComponent<GameComponent_StoreGhostPawns>();
-            if (gameComp.ColonistGhosts < 0 && gameComp.SpawnedColonistGhosts < 0)
+            if (GameComp != null)
             {
-                reason = "SZ_AbilityRaiseDead_NoneDead".Translate(parent.pawn);
-                return true;
+                // Case where no colonists have died, so no ghosts available
+                if (GameComp.AvailableColonistGhosts.Count <= 0 
+                    && GameComp.SpawnedColonistGhosts.Count <= 0)
+                {
+                    reason = "SZ_AbilityRaiseDead_NoneDead".Translate(parent.pawn);
+                    return true;
+                }
+                // Case where all available ghosts are currently spawned
+                else if (GameComp.AvailableColonistGhosts.Count <= 0 
+                    && GameComp.SpawnedColonistGhosts.Count > 0)
+                {
+                    reason = "SZ_AbilityRaiseDead_AllDeadSpawned".Translate(parent.pawn);
+                    return true;
+                }
             }
-            else if (gameComp.ColonistGhosts < 0 && gameComp.SpawnedColonistGhosts > 0)
-            {
-                reason = "SZ_AbilityRaiseDead_AllDeadSpawned".Translate(parent.pawn);
-                return true;
-            }
+
             reason = null;
             return false;
         }

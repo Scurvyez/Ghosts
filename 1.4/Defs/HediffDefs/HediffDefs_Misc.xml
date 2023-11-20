@@ -21,6 +21,7 @@
                 <label>bright soul</label>
                 <minSeverity>0.01</minSeverity>
             </li>
+            <!-- Add more with different labels -->
         </stages>
     </HediffDef>
 

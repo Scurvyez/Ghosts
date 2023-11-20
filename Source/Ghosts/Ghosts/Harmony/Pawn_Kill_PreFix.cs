@@ -1,6 +1,9 @@
 ﻿using Verse;
 using HarmonyLib;
 using UnityEngine;
+using System.IO;
+using System;
+using System.Collections.Generic;
 
 namespace Ghosts
 {
@@ -11,9 +14,12 @@ namespace Ghosts
         [HarmonyPrefix]
         public static void GenerateGhostWhenPawnDies(Pawn __instance, DamageInfo? dinfo, Hediff exactCulprit = null)
         {
+            GameComponent_StoreGhostPawns gameComp = Current.Game.GetComponent<GameComponent_StoreGhostPawns>();
+
             if (__instance.Spawned && __instance.IsColonist) // change in the future to allow non-colonist ghosts?
             {
                 DumpPawnTextures(__instance);
+                gameComp.AvailableColonistGhosts.Add(__instance.Name);
             }
         }
 
@@ -26,13 +32,15 @@ namespace Ghosts
 
                 if (sourceFrameSetOut)
                 {
+                    Texture2D[] finalPawnTextures = new Texture2D[4];
+
                     for (int i = 0; i < 4; i++)
                     {
                         RenderTexture pawnTextureAtlas = frameSet.atlas;
-                        Texture2D finalPawnTexture = ToTexture2D(pawnTextureAtlas, frameSet.uvRects[i]);
-
-                        SendTexturesToComp(pawn, new Texture2D[] { finalPawnTexture });
+                        finalPawnTextures[i] = ToTexture2D(pawnTextureAtlas, frameSet.uvRects[i]);
+                        //SaveCachedTextureToFile(finalPawnTextures[i], pawn, i);
                     }
+                    SendTexturesToComp(pawn, finalPawnTextures);
                 }
             }
         }
@@ -47,19 +55,56 @@ namespace Ghosts
             return pawnTexture;
         }
 
+        /*
+        /// <summary>
+        /// For debugging!
+        /// Remember to disable this when all done. :)
+        /// Exports generated textures to file on device.
+        /// </summary>
+        public static void SaveCachedTextureToFile(Texture2D texture, Pawn pawn, int frameIndex)
+        {
+            if (texture != null)
+            {
+                string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                string folderPath = Path.Combine(desktopPath, "GhostTextures");
+                string fileName = $"{pawn.Name}_GhostTexture_{frameIndex}.png";
+                string filePath = Path.Combine(folderPath, fileName);
+
+                if (!Directory.Exists(folderPath))
+                {
+                    Directory.CreateDirectory(folderPath);
+                }
+
+                byte[] bytes = ImageConversion.EncodeToPNG(texture);
+                File.WriteAllBytes(filePath, bytes);
+            }
+        }
+        */
+
         public static void SendTexturesToComp(Pawn pawn, Texture2D[] textures)
         {
             GameComponent_StoreGhostPawns gameComp = Current.Game.GetComponent<GameComponent_StoreGhostPawns>();
 
             if (gameComp != null)
             {
-                if (!gameComp.GhostTextures.ContainsKey(pawn.Name.ToString()))
+                if (!gameComp.GhostTextures.ContainsKey(pawn.Name))
                 {
-                    gameComp.GhostTextures.Add(pawn.Name.ToString(), textures);
+                    // Convert each Texture2D to PNG byte array
+                    List<byte[]> textureBytesList = new List<byte[]>();
+                    foreach (Texture2D texture in textures)
+                    {
+                        if (texture != null)
+                        {
+                            textureBytesList.Add(ImageConversion.EncodeToPNG(texture));
+                        }
+                    }
+                    // Finish this ^^
+
+                    gameComp.GhostTextures.Add(pawn.Name, textures);
                 }
                 else
                 {
-                    gameComp.GhostTextures[pawn.Name.ToString()] = textures;
+                    gameComp.GhostTextures[pawn.Name] = textures;
                 }
             }
         }

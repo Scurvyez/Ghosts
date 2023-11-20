@@ -1,7 +1,5 @@
-﻿using System.Linq;
-using RimWorld;
+﻿using RimWorld;
 using Verse;
-using UnityEngine;
 
 namespace Ghosts
 {
@@ -18,21 +16,14 @@ namespace Ghosts
         public override void CompPostTick(ref float severityAdjustment)
         {
             ticksRemaining--;
-            Color debugColor1 = new Color(0.545f, 0.388f, 0.645f, 1f);
             GameComponent_StoreGhostPawns gameComp = Current.Game.GetComponent<GameComponent_StoreGhostPawns>();
             
             if (ticksRemaining <= 0)
             {
                 Pawn.DeSpawn(DestroyMode.Vanish);
-                gameComp.ColonistGhosts += 1;
+                gameComp.SpawnedColonistGhosts.Remove(Pawn.Name);
+                gameComp.AvailableColonistGhosts.Add(Pawn.Name);
                 Pawn.health.RemoveAllHediffs();
-                gameComp.SpawnedColonistGhosts =+ 1;
-
-                if (ticksRemaining == 0)
-                {
-                    Log.Message("ColonistGhosts: " + gameComp.ColonistGhosts.ToString().Colorize(debugColor1));
-                    Log.Message("SpawnedColonistGhosts: " + gameComp.SpawnedColonistGhosts.ToString().Colorize(debugColor1));
-                }
             }
         }
 
