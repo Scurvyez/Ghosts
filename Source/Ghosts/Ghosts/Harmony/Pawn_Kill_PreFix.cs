@@ -16,10 +16,18 @@ namespace Ghosts
         {
             GameComponent_StoreGhostPawns gameComp = Current.Game.GetComponent<GameComponent_StoreGhostPawns>();
 
-            if (__instance.Spawned && __instance.IsColonist) // change in the future to allow non-colonist ghosts?
+            if (__instance.Spawned)
             {
-                DumpPawnTextures(__instance);
-                gameComp.AvailableColonistGhosts.Add(__instance.Name);
+                if (__instance.IsColonist && !__instance.DevelopmentalStage.Baby())
+                {
+                    DumpPawnTextures(__instance);
+                    gameComp.AvailableColonistGhosts.Add(__instance.Name);
+                }
+                if (!__instance.IsColonist)
+                {
+                    DumpPawnTextures(__instance);
+                    gameComp.AvailableHosilteGhosts.Add(__instance.Name);
+                }
             }
         }
 

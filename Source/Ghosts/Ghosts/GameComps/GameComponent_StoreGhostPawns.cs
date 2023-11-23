@@ -11,6 +11,10 @@ namespace Ghosts
     {
         public List<Name> AvailableColonistGhosts = new List<Name>();
         public List<Name> SpawnedColonistGhosts = new List<Name>();
+
+        public List<Name> AvailableHosilteGhosts = new List<Name>();
+        public List<Name> SpawnedHosilteGhosts = new List<Name>();
+
         public Dictionary<Name, Texture2D[]> GhostTextures = new Dictionary<Name, Texture2D[]>();
 
         public GameComponent_StoreGhostPawns(Game game)
@@ -26,12 +30,6 @@ namespace Ghosts
         public override void FinalizeInit()
         {
             base.FinalizeInit();
-        }
-
-        // Helper method to check if a ghost with a specific name is already spawned
-        public bool IsGhostAlreadySpawned(Name ghostName)
-        {
-            return SpawnedColonistGhosts.Contains(ghostName);
         }
 
         public override void ExposeData()

@@ -43,7 +43,17 @@
             <soundMeleeMiss>Pawn_Melee_SmallScratch_Miss</soundMeleeMiss>
         </race>
         <comps>
-            <li Class="Ghosts.CompProperties_ExtraPawnGraphics" />
+            <li Class="Ghosts.CompProperties_ExtraPawnGraphics">
+                <_Color>(2, 2, 2, 0.75)</_Color>
+                <_FlowDetail>0.06</_FlowDetail>
+                <_FlowSpeed>0.04</_FlowSpeed>
+                <_FlowMapScale>0.5</_FlowMapScale>
+                <_TransparencySpeed>0.009</_TransparencySpeed>
+                <_TransparencyMapScale>0.9</_TransparencyMapScale>
+                <_TransparencyTint>(1, 1, 1.5, 1)</_TransparencyTint>
+                <_Brightness>0.75</_Brightness>
+                <_BlackLevel>0.0005</_BlackLevel>
+            </li>
             <li Class="Ghosts.CompProperties_GiveThought">
                 <badThoughtDef>SZ_SawGhost_Scared</badThoughtDef>
                 <radius>6</radius>

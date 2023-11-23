@@ -21,7 +21,56 @@
                 <label>bright soul</label>
                 <minSeverity>0.01</minSeverity>
             </li>
-            <!-- Add more with different labels -->
+            <li>
+                <label>bright soul</label>
+                <minSeverity>0.2</minSeverity>
+                <capMods>
+                    <li>
+                        <capacity>Moving</capacity>
+                        <offset>0.5</offset>
+                    </li>
+                </capMods>
+            </li>
+            <li>
+                <label>bright soul</label>
+                <minSeverity>0.45</minSeverity>
+                <capMods>
+                    <li>
+                        <capacity>Moving</capacity>
+                        <offset>1.0</offset>
+                    </li>
+                </capMods>
+            </li>
+            <li>
+                <label>bright soul</label>
+                <minSeverity>0.6</minSeverity>
+                <capMods>
+                    <li>
+                        <capacity>Moving</capacity>
+                        <offset>1.5</offset>
+                    </li>
+                </capMods>
+            </li>
+            <li>
+                <label>bright soul</label>
+                <minSeverity>0.85</minSeverity>
+                <capMods>
+                    <li>
+                        <capacity>Moving</capacity>
+                        <offset>2.0</offset>
+                    </li>
+                </capMods>
+            </li>
+            <li>
+                <label>bright soul</label>
+                <minSeverity>0.99</minSeverity>
+                <capMods>
+                    <li>
+                        <capacity>Moving</capacity>
+                        <offset>2.5</offset>
+                    </li>
+                </capMods>
+            </li>
         </stages>
     </HediffDef>
 

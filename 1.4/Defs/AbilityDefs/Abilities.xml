@@ -11,10 +11,10 @@
         <warmupMoteSocialSymbol>UI/Abilities/RaiseDead</warmupMoteSocialSymbol> <!-- PLACEHOLDER -->
         <warmupSound>MoralistAbility_Warmup</warmupSound> <!-- PLACEHOLDER -->
         <hotKey>Misc12</hotKey>
-        <jobDef>CastAbilityOnThingUninterruptible</jobDef> <!-- PLACEHOLDER -->
+        <jobDef>CastAbilityOnThingUninterruptible</jobDef>
         <targetRequired>False</targetRequired>
         <showCastingProgressBar>True</showCastingProgressBar>
-        <showPsycastEffects>False</showPsycastEffects> <!-- PLACEHOLDER -->
+        <showPsycastEffects>True</showPsycastEffects>
         <displayGizmoWhileUndrafted>True</displayGizmoWhileUndrafted>
         <disableGizmoWhileUndrafted>False</disableGizmoWhileUndrafted>
         <uiOrder>2</uiOrder>
@@ -39,7 +39,7 @@
             <requireLineOfSight>False</requireLineOfSight>
             <nonInterruptingSelfCast>true</nonInterruptingSelfCast>
             <targetParams>
-              <canTargetSelf>True</canTargetSelf>
+                <canTargetSelf>True</canTargetSelf>
             </targetParams>
         </verbProperties>
     </AbilityDef>

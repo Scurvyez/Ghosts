@@ -41,31 +41,34 @@ namespace Ghosts
                     // Setup the material + shader properties
                     Material ghostMat = new Material(GhostsContentDatabase.GhostEffect);
                     ghostMat.SetTexture("_MainTex", Textures[index]);
-                    ghostMat.SetColor("_Color", new Color(2f, 2f, 2f, 0.75f));
+                    ghostMat.SetColor("_Color", Props._Color);
                     ghostMat.SetTexture("_FlowMap", FlowMap);
-                    ghostMat.SetFloat("_FlowDetail", 0.06f);
-                    ghostMat.SetFloat("_FlowSpeed", 0.04f);
-                    ghostMat.SetFloat("_FlowMapScale", 0.5f);
+                    ghostMat.SetFloat("_FlowDetail", Props._FlowDetail);
+                    ghostMat.SetFloat("_FlowSpeed", Props._FlowSpeed);
+                    ghostMat.SetFloat("_FlowMapScale", Props._FlowMapScale);
                     ghostMat.SetTexture("_TransparencyMap", FlowMap);
-                    ghostMat.SetFloat("_TransparencySpeed", 0.009f);
-                    ghostMat.SetFloat("_TransparencyMapScale", 0.9f);
-                    ghostMat.SetColor("_TransparencyTint", new Color(1f, 1f, 1.5f, 1f));
-                    ghostMat.SetFloat("_Brightness", 0.75f);
-                    ghostMat.SetFloat("_BlackLevel", 0.0005f);
+                    ghostMat.SetFloat("_TransparencySpeed", Props._TransparencySpeed);
+                    ghostMat.SetFloat("_TransparencyMapScale", Props._TransparencyMapScale);
+                    ghostMat.SetColor("_TransparencyTint", Props._TransparencyTint);
+                    ghostMat.SetFloat("_Brightness", Props._Brightness);
+                    ghostMat.SetFloat("_BlackLevel", Props._BlackLevel);
 
                     // Calculate the rotation angle based on the pawn's rotation
                     float rotationAngle = 0f;
                     switch (parent.Rotation.AsInt)
                     {
-                        case 1: rotationAngle = 0f; break;  // East
+                        case 1: rotationAngle = 0f; break; // East
                         case 2: rotationAngle = 0f; break; // South
                         case 3: rotationAngle = 0f; break; // West
                     }
 
                     Vector3 drawPos = parent.DrawPos;
+                    int texWidth = Textures[index].width;
+                    float meshScalingFactor = texWidth / 60f;
+                    // 60 instead of 64 for a little padding since ghost texture edges get shrunk by the shader
                     drawPos.y = AltitudeLayer.VisEffects.AltitudeFor();
                     Matrix4x4 matrix = Matrix4x4.TRS(drawPos, Quaternion.Euler(0f, rotationAngle, 0f), new Vector3(1f, 1f, 1f));
-                    Graphics.DrawMesh(MeshPool.plane20, matrix, ghostMat, 0);
+                    Graphics.DrawMesh(MeshPool.GetMeshSetForWidth(meshScalingFactor).MeshAt(parent.Rotation), matrix, ghostMat, 0);
                 }
             }
         }
@@ -78,7 +81,7 @@ namespace Ghosts
                 case 0: return 0; // North
                 case 1: return 1; // East
                 case 2: return 2; // South
-                case 3: return 3; // West
+                case 3: return 1; // West, mismatch here because of the MeshAt() above
                 default: return 0;
             }
         }
