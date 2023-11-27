@@ -12,8 +12,8 @@ namespace Ghosts
         public List<Name> AvailableColonistGhosts = new List<Name>();
         public List<Name> SpawnedColonistGhosts = new List<Name>();
 
-        public List<Name> AvailableHosilteGhosts = new List<Name>();
-        public List<Name> SpawnedHosilteGhosts = new List<Name>();
+        public List<Name> AvailableHostileGhosts = new List<Name>();
+        public List<Name> SpawnedHostileGhosts = new List<Name>();
 
         public Dictionary<Name, Texture2D[]> GhostTextures = new Dictionary<Name, Texture2D[]>();
 
@@ -35,7 +35,11 @@ namespace Ghosts
         public override void ExposeData()
         {
             base.ExposeData();
-            // SAVE STUFF! Come back to this later
+
+            //Scribe_Collections.Look(ref AvailableColonistGhosts, "AvailableColonistGhosts", LookMode.Deep);
+            //Scribe_Collections.Look(ref SpawnedColonistGhosts, "SpawnedColonistGhosts", LookMode.Deep);
+            //Scribe_Collections.Look(ref AvailableHostileGhosts, "AvailableHostileGhosts", LookMode.Deep);
+            //Scribe_Collections.Look(ref SpawnedHostileGhosts, "SpawnedHostileGhosts", LookMode.Deep);
         }
     }
 }

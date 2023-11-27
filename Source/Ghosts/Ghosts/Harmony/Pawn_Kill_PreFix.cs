@@ -16,7 +16,7 @@ namespace Ghosts
         {
             GameComponent_StoreGhostPawns gameComp = Current.Game.GetComponent<GameComponent_StoreGhostPawns>();
 
-            if (__instance.Spawned)
+            if (__instance.Spawned && !__instance.IsColonyMech)
             {
                 if (__instance.IsColonist && !__instance.DevelopmentalStage.Baby())
                 {
@@ -26,7 +26,7 @@ namespace Ghosts
                 if (!__instance.IsColonist)
                 {
                     DumpPawnTextures(__instance);
-                    gameComp.AvailableHosilteGhosts.Add(__instance.Name);
+                    gameComp.AvailableHostileGhosts.Add(__instance.Name);
                 }
             }
         }
@@ -95,6 +95,7 @@ namespace Ghosts
             {
                 if (!gameComp.GhostTextures.ContainsKey(pawn.Name))
                 {
+                    /*
                     // Convert each Texture2D to PNG byte array
                     List<byte[]> textureBytesList = new List<byte[]>();
                     foreach (Texture2D texture in textures)
@@ -104,7 +105,7 @@ namespace Ghosts
                             textureBytesList.Add(ImageConversion.EncodeToPNG(texture));
                         }
                     }
-                    // Finish this ^^
+                    */
 
                     gameComp.GhostTextures.Add(pawn.Name, textures);
                 }
