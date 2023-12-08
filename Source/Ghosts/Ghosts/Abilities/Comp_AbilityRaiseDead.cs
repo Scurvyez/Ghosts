@@ -9,7 +9,7 @@ namespace Ghosts
     {
         public new CompProperties_AbilityRaiseDead Props => (CompProperties_AbilityRaiseDead)props;
         GameComponent_StoreGhostPawns GameComp = Current.Game.GetComponent<GameComponent_StoreGhostPawns>();
-        
+
         public override void Apply(LocalTargetInfo target, LocalTargetInfo dest)
         {
             base.Apply(target, dest);
@@ -63,14 +63,14 @@ namespace Ghosts
             if (GameComp != null)
             {
                 // Case where no colonists have died, so no ghosts available
-                if (GameComp.AvailableColonistGhosts.Count <= 0 
+                if (GameComp.AvailableColonistGhosts.Count <= 0
                     && GameComp.SpawnedColonistGhosts.Count <= 0)
                 {
                     reason = "SZ_AbilityRaiseDead_NoneDead".Translate(parent.pawn);
                     return true;
                 }
                 // Case where all available ghosts are currently spawned
-                else if (GameComp.AvailableColonistGhosts.Count <= 0 
+                else if (GameComp.AvailableColonistGhosts.Count <= 0
                     && GameComp.SpawnedColonistGhosts.Count > 0)
                 {
                     reason = "SZ_AbilityRaiseDead_AllDeadSpawned".Translate(parent.pawn);

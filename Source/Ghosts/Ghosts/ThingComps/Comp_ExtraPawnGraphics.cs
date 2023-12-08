@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Reflection.Emit;
 using UnityEngine;
 using Verse;
 
@@ -31,12 +30,14 @@ namespace Ghosts
 
             if (parent is Ghost parentPawn)
             {
-                //Vector3 drawPos = parent.DrawPos;
-
                 if (Textures != null && Textures.Length > 0)
                 {
                     // Determine the index based on the pawn's rotation
                     int index = GetIndex(parent.Rotation);
+
+                    // Log the name of the texture being used
+                    string curTex = $"{parentPawn.Name}_{index}";
+                    Log.Message($"Current Ghost Texture Name: {curTex}");
 
                     // Setup the material + shader properties
                     Material ghostMat = new Material(GhostsContentDatabase.GhostEffect);
@@ -65,7 +66,7 @@ namespace Ghosts
                     Vector3 drawPos = parent.DrawPos;
                     int texWidth = Textures[index].width;
                     float meshScalingFactor = texWidth / 60f;
-                    // 60 instead of 64 for a little padding since ghost texture edges get shrunk by the shader
+                    // 60 instead of 64 for a little width/height since ghost texture edges get shrunk by the shader
                     drawPos.y = AltitudeLayer.VisEffects.AltitudeFor();
                     Matrix4x4 matrix = Matrix4x4.TRS(drawPos, Quaternion.Euler(0f, rotationAngle, 0f), new Vector3(1f, 1f, 1f));
                     Graphics.DrawMesh(MeshPool.GetMeshSetForWidth(meshScalingFactor).MeshAt(parent.Rotation), matrix, ghostMat, 0);
