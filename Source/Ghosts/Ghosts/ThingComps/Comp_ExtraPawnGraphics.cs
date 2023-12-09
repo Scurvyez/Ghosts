@@ -30,19 +30,18 @@ namespace Ghosts
 
             if (parent is Ghost parentPawn)
             {
-                if (Textures != null && Textures.Length > 0)
+                if (Textures != null)
                 {
                     // Determine the index based on the pawn's rotation
                     int index = GetIndex(parent.Rotation);
 
                     // Log the name of the texture being used
-                    string curTex = $"{parentPawn.Name}_{index}";
-                    Log.Message($"Current Ghost Texture Name: {curTex}");
+                    //string curTex = $"{parentPawn.Name}_{index}";
+                    //Log.Message($"Current Ghost Texture Name: {curTex}");
 
                     // Setup the material + shader properties
                     Material ghostMat = new Material(GhostsContentDatabase.GhostEffect);
                     ghostMat.SetTexture("_MainTex", Textures[index]);
-                    ghostMat.SetColor("_Color", Props._Color);
                     ghostMat.SetTexture("_FlowMap", FlowMap);
                     ghostMat.SetFloat("_FlowDetail", Props._FlowDetail);
                     ghostMat.SetFloat("_FlowSpeed", Props._FlowSpeed);
@@ -50,9 +49,8 @@ namespace Ghosts
                     ghostMat.SetTexture("_TransparencyMap", FlowMap);
                     ghostMat.SetFloat("_TransparencySpeed", Props._TransparencySpeed);
                     ghostMat.SetFloat("_TransparencyMapScale", Props._TransparencyMapScale);
-                    ghostMat.SetColor("_TransparencyTint", Props._TransparencyTint);
+                    ghostMat.SetColor("_Tint", Props._Tint);
                     ghostMat.SetFloat("_Brightness", Props._Brightness);
-                    ghostMat.SetFloat("_BlackLevel", Props._BlackLevel);
 
                     // Calculate the rotation angle based on the pawn's rotation
                     float rotationAngle = 0f;
@@ -70,6 +68,9 @@ namespace Ghosts
                     drawPos.y = AltitudeLayer.VisEffects.AltitudeFor();
                     Matrix4x4 matrix = Matrix4x4.TRS(drawPos, Quaternion.Euler(0f, rotationAngle, 0f), new Vector3(1f, 1f, 1f));
                     Graphics.DrawMesh(MeshPool.GetMeshSetForWidth(meshScalingFactor).MeshAt(parent.Rotation), matrix, ghostMat, 0);
+
+                    // Log the mesh scaling factor
+                    Log.Message($"Mesh Scaling Factor: {meshScalingFactor}");
                 }
             }
         }
