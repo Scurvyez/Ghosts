@@ -40,7 +40,8 @@ Shader "Unlit/GhostEffect"
 		    }
 
             ZWrite Off
-            Blend SrcAlpha OneMinusSrcAlpha, SrcAlpha OneMinusSrcAlpha
+            BlendOp Add
+			Blend SrcAlpha One
 
             CGPROGRAM
             #pragma vertex vert
@@ -90,11 +91,11 @@ Shader "Unlit/GhostEffect"
                 o.mainUV = TRANSFORM_TEX(IN.uv, _MainTex);
 
                 // Apply flow map scaling only to UV coordinates used for sampling the flow map
-                float2 flowUV = (IN.uv - 0.5) / _FlowMapScale + 0.5 + (_GameSeconds * _FlowSpeed);
+                float2 flowUV = (IN.uv - 0.5) / _FlowMapScale + 0.5 + (_Time.y * _FlowSpeed);
                 o.flowUV = TRANSFORM_TEX(flowUV, _FlowMap);
 
                 // Apply flow map scaling only to UV coordinates used for sampling the flow map
-                float2 transUV = (IN.uv - 0.5) / _TransparencyMapScale + 0.5 + (_GameSeconds * _TransparencySpeed);
+                float2 transUV = (IN.uv - 0.5) / _TransparencyMapScale + 0.5 + (_Time.y * _TransparencySpeed);
                 o.transUV = TRANSFORM_TEX(transUV, _TransparencyMap);
 
                 return o;
@@ -107,8 +108,8 @@ Shader "Unlit/GhostEffect"
                 flowDir *= _FlowDetail; // scale the flow direction based on speed
 
                 // calculate our two phases for the flow animation
-                float phase0 = frac(_GameSeconds * 0.5f + 0.5f);
-                float phase1 = frac(_GameSeconds * 0.5f + 1.0f);
+                float phase0 = frac(_Time.y * 0.5f + 0.5f);
+                float phase1 = frac(_Time.y * 0.5f + 1.0f);
 
                 // sample the main texture at two different phases for the animation
                 half3 tex0 = tex2D(_MainTex, IN.mainUV + flowDir.xy * phase0);

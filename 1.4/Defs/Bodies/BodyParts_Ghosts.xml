@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+    <!--==================== Ghost Bodyparts ====================-->
+
+    <BodyPartDef>
+        <defName>SZ_EtherealEssence</defName>
+        <label>ethereal essence</label>
+        <hitPoints>9999</hitPoints>
+        <bleedRate>0</bleedRate>
+        <skinCovered>false</skinCovered>
+        <canScarify>false</canScarify>
+        <beautyRelated>false</beautyRelated>
+        <solid>false</solid>
+        <frostbiteVulnerability>1</frostbiteVulnerability>
+        <canSuggestAmputation>false</canSuggestAmputation>
+        <tags>
+            <li>ConsciousnessSource</li>
+            <li>BloodPumpingSource</li>
+            <li>BreathingSource</li>
+            <li>MetabolismSource</li>
+        </tags>
+    </BodyPartDef>
+
+    <BodyPartDef>
+        <defName>SZ_SpectralAura</defName>
+        <label>spectral aura</label>
+        <hitPoints>9999</hitPoints>
+        <bleedRate>0</bleedRate>
+        <skinCovered>false</skinCovered>
+        <canScarify>false</canScarify>
+        <beautyRelated>false</beautyRelated>
+        <solid>false</solid>
+        <frostbiteVulnerability>0</frostbiteVulnerability>
+        <canSuggestAmputation>false</canSuggestAmputation>
+        <tags>
+            <li>ManipulationLimbCore</li>
+            <li>MovingLimbCore</li>
+        </tags>
+    </BodyPartDef>
+
+</Defs>

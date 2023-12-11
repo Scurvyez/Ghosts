@@ -27,7 +27,7 @@ GHOSTS!!!
             + Thanks to...
                 - Killathon
                     + for pawn duplication code
-                    + reddit for the great ideas implemented in this mod
+                    + Official RW Discord server for the great ideas implemented in this mod
 
             + StatDefs
 
@@ -62,7 +62,7 @@ GHOSTS!!!
                 - for ethereal effects
 
             + random other stuff
-                - make new BodyDef for ghost types?
+                - [DEP] make new BodyDef for ghost types?
                 - [DONE] add check to see if pawns in radius of thought comp are blind or not
                 - can attack/take damage?
                 - move through walls/buildings

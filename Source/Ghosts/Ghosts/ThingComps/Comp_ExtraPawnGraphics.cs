@@ -5,9 +5,9 @@ using Verse;
 namespace Ghosts
 {
     [StaticConstructorOnStartup]
-    public class Comp_ExtraPawnGraphics : ThingComp
+    public class Comp_GhostGraphics : ThingComp
     {
-        public CompProperties_ExtraPawnGraphics Props => (CompProperties_ExtraPawnGraphics)props;
+        public CompProperties_GhostGraphics Props => (CompProperties_GhostGraphics)props;
         public GameComponent_StoreGhostPawns GameComp = Current.Game.GetComponent<GameComponent_StoreGhostPawns>();
         private Texture2D[] Textures = new Texture2D[4];
         private Texture2D FlowMap = ContentFinder<Texture2D>.Get("Other/Ripples", true);
@@ -34,10 +34,6 @@ namespace Ghosts
                 {
                     // Determine the index based on the pawn's rotation
                     int index = GetIndex(parent.Rotation);
-
-                    // Log the name of the texture being used
-                    //string curTex = $"{parentPawn.Name}_{index}";
-                    //Log.Message($"Current Ghost Texture Name: {curTex}");
 
                     // Setup the material + shader properties
                     Material ghostMat = new Material(GhostsContentDatabase.GhostEffect);
@@ -68,9 +64,6 @@ namespace Ghosts
                     drawPos.y = AltitudeLayer.VisEffects.AltitudeFor();
                     Matrix4x4 matrix = Matrix4x4.TRS(drawPos, Quaternion.Euler(0f, rotationAngle, 0f), new Vector3(1f, 1f, 1f));
                     Graphics.DrawMesh(MeshPool.GetMeshSetForWidth(meshScalingFactor).MeshAt(parent.Rotation), matrix, ghostMat, 0);
-
-                    // Log the mesh scaling factor
-                    Log.Message($"Mesh Scaling Factor: {meshScalingFactor}");
                 }
             }
         }

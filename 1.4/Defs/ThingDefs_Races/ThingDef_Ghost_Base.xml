@@ -20,7 +20,7 @@
         <race>
             <thinkTreeMain>SZ_GhostMain</thinkTreeMain>
             <thinkTreeConstant>SZ_GhostConstant</thinkTreeConstant>
-            <body>Human</body> <!-- PLACEHOLDER -->
+            <body>SZ_GhostBasic</body>
             <herdAnimal>false</herdAnimal>
             <baseBodySize>1.0</baseBodySize>
             <baseHealthScale>1.0</baseHealthScale>
@@ -43,7 +43,7 @@
             <soundMeleeMiss>Pawn_Melee_SmallScratch_Miss</soundMeleeMiss>
         </race>
         <comps>
-            <li Class="Ghosts.CompProperties_ExtraPawnGraphics">
+            <li Class="Ghosts.CompProperties_GhostGraphics">
                 <_FlowDetail>0.06</_FlowDetail>
                 <_FlowSpeed>0.04</_FlowSpeed>
                 <_FlowMapScale>0.5</_FlowMapScale>

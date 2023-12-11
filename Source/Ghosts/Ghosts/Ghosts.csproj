@@ -71,6 +71,7 @@
     <Compile Include="GameComps\GameComponent_StoreGhostPawns.cs" />
     <Compile Include="HediffComps\CompProperties\HediffCompProperties_DisappearAfterTime.cs" />
     <Compile Include="HediffComps\HediffComp_DisappearAfterTime.cs" />
+    <Compile Include="Utils\TextureConverterUtil.cs" />
     <Compile Include="Utils\GhostsMod.cs" />
     <Compile Include="DefOfs\GhostsDefOf.cs" />
     <Compile Include="Harmony\Pawn_Kill_PreFix.cs" />

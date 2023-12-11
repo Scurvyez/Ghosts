@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+    <!--==================== Ghost Body: Basic ====================-->
+
+    <BodyDef>
+		<defName>SZ_GhostBasic</defName>
+		<label>ghost</label>
+		<corePart>
+			<def>SZ_SpectralAura</def>
+			<height>Top</height>
+			<depth>Outside</depth>
+			<parts>
+				<li>
+					<def>SZ_EtherealEssence</def>
+					<coverage>0.75</coverage>
+					<depth>Inside</depth>
+				</li>
+			</parts>
+		</corePart>
+	</BodyDef>
+
+</Defs>
