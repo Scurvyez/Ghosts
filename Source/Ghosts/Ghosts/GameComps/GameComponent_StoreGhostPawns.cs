@@ -17,7 +17,7 @@ namespace Ghosts
         {
             base.ExposeData();
 
-            //Scribe_Collections.Look(ref AvailableColonistGhosts, "AvailableColonistGhosts", LookMode.Deep);
+            Scribe_Collections.Look(ref AvailableColonistGhosts, "AvailableColonistGhosts", LookMode.Deep);
             //Scribe_Collections.Look(ref SpawnedColonistGhosts, "SpawnedColonistGhosts", LookMode.Deep);
             //Scribe_Collections.Look(ref GhostTextures, "GhostTextures", LookMode.Deep);
         }
